@@ -12,5 +12,11 @@ namespace MM_Jewellers.Controllers
         {
             return View();
         }
+        public IActionResult RFQ()
+        {
+            return View();
+        }
+
+
     }
 }

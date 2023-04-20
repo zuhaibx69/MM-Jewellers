@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AKS\\source\\repos\\MM Jewellers\\MM Jewellers\\MM Jewellers.csproj": {}
+    "D:\\Projects\\MM-Jewellers\\MM Jewellers\\MM Jewellers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AKS\\source\\repos\\MM Jewellers\\MM Jewellers\\MM Jewellers.csproj": {
+    "D:\\Projects\\MM-Jewellers\\MM Jewellers\\MM Jewellers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AKS\\source\\repos\\MM Jewellers\\MM Jewellers\\MM Jewellers.csproj",
+        "projectUniqueName": "D:\\Projects\\MM-Jewellers\\MM Jewellers\\MM Jewellers.csproj",
         "projectName": "MM Jewellers",
-        "projectPath": "C:\\Users\\AKS\\source\\repos\\MM Jewellers\\MM Jewellers\\MM Jewellers.csproj",
+        "projectPath": "D:\\Projects\\MM-Jewellers\\MM Jewellers\\MM Jewellers.csproj",
         "packagesPath": "C:\\Users\\AKS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AKS\\source\\repos\\MM Jewellers\\MM Jewellers\\obj\\",
+        "outputPath": "D:\\Projects\\MM-Jewellers\\MM Jewellers\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

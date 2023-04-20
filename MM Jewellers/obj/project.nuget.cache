@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EWza1oUrt4y/1E/zUrLz1BH2E//ZAxkdicrzqmAW193EUMQS+FmRIQkDP1+C7eGDfsw4lC/McSsIFUp1gn3PkA==",
+  "dgSpecHash": "WP+vNeHecEjGG1BFvQYH9qDYZJp2vpg3mPlndXszf1vbDXcUNj+IBDhphN+uPGszk8SPewv58inceBDA/DgT8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AKS\\source\\repos\\MM Jewellers\\MM Jewellers\\MM Jewellers.csproj",
+  "projectFilePath": "D:\\Projects\\MM-Jewellers\\MM Jewellers\\MM Jewellers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AKS\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\AKS\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
