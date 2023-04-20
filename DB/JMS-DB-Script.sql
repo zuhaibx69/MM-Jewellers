@@ -1,0 +1,62 @@
+
+create database JewelleryManagementSystem
+
+use JewelleryManagementSystem
+
+create table Jeweller
+(
+	jeweller_id varchar(25) not null primary key,
+	jeweller_name varchar(50) not null,
+	jeweller_password varchar(20) not null
+
+);
+
+create table Vendor
+(
+	vendor_id int primary key identity(1,1),
+	vendor_name varchar(50) not null,
+	vendor_email varchar(50) not null unique,
+	vendor_password varchar(20) not null,
+	vendor_contact varchar(11) not null unique,
+	vendor_licenseNo varchar(10)
+
+);
+
+create table Product
+(
+	prd_id int primary key identity(1,1),
+	prd_name varchar(50) not null unique,
+	prd_description varchar(50),
+	prd_unitPrice int not null,
+	prd_unit varchar(50) not null
+	
+);
+
+create table Inventory
+(
+	prd_id int foreign key references Product(prd_id) primary key,
+	prd_quantity int not null,
+	prd_price int not null
+
+);
+
+create table PurchaseOrder
+(
+	order_id int primary key identity(1,1),
+	vendor_id int foreign key references Vendor(vendor_id),
+	prd_id int foreign key references Product(prd_id),
+	prd_quantity int not null,
+	prd_price int not null
+
+);
+
+create table Payment
+(
+	order_id int foreign key references PurchaseOrder(order_id),
+	payment_type varchar(20) not null,
+	netprice int not null,
+
+	primary key(order_id , payment_type)
+
+);
+
