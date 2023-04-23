@@ -11,6 +11,10 @@ create table Jeweller
 
 );
 
+insert into Jeweller values ('A1', 'Huzaifa Admin', '1234');
+select * from Jeweller
+
+
 create table Vendor
 (
 	vendor_id int primary key identity(1,1),
@@ -32,6 +36,10 @@ create table Product
 	
 );
 
+insert into Product values ('Gold', 'Raw Material', 15000, 'Grams');
+select * from Product
+
+
 create table Inventory
 (
 	prd_id int foreign key references Product(prd_id) primary key,
@@ -40,13 +48,31 @@ create table Inventory
 
 );
 
-create table PurchaseOrder
+insert into Inventory values (1, 0, 0);
+select * from Inventory
+
+create table Quotation_Request
 (
-	order_id int primary key identity(1,1),
-	vendor_id int foreign key references Vendor(vendor_id),
+	req_id int primary key identity(1,1),
 	prd_id int foreign key references Product(prd_id),
 	prd_quantity int not null,
-	prd_price int not null
+	order_deadline date not null
+);
+
+create table Quotation_Response
+(
+	req_id int foreign key references Quotation_Request(req_id),
+	vendor_id int foreign key references Vendor(vendor_id),
+	price_perunit int not null,
+
+	primary key (req_id, vendor_id)
+
+);
+
+create table PurchaseOrder
+(
+	order_id int foreign key references Quotation_Request(req_id) primary key,
+	vendor_id int foreign key references Vendor(vendor_id)
 
 );
 
