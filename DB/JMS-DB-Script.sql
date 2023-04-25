@@ -12,6 +12,7 @@ create table Jeweller
 );
 
 insert into Jeweller values ('A1', 'Huzaifa Admin', '1234');
+insert into Jeweller values ('A2', 'Admin', '1234');
 select * from Jeweller
 
 
