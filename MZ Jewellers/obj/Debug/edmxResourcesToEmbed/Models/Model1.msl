@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JewelleryManagementSystemModelStoreContainer" CdmEntityContainer="JewelleryManagementSystemEntities">
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="prd_id" ColumnName="prd_id" />
+          <ScalarProperty Name="prd_quantity" ColumnName="prd_quantity" />
+          <ScalarProperty Name="prd_price" ColumnName="prd_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jewellers">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Jeweller">
+        <MappingFragment StoreEntitySet="Jeweller">
+          <ScalarProperty Name="jeweller_id" ColumnName="jeweller_id" />
+          <ScalarProperty Name="jeweller_name" ColumnName="jeweller_name" />
+          <ScalarProperty Name="jeweller_password" ColumnName="jeweller_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+          <ScalarProperty Name="netprice" ColumnName="netprice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="prd_id" ColumnName="prd_id" />
+          <ScalarProperty Name="prd_name" ColumnName="prd_name" />
+          <ScalarProperty Name="prd_description" ColumnName="prd_description" />
+          <ScalarProperty Name="prd_unitPrice" ColumnName="prd_unitPrice" />
+          <ScalarProperty Name="prd_unit" ColumnName="prd_unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseOrders">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.PurchaseOrder">
+        <MappingFragment StoreEntitySet="PurchaseOrder">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotation_Request">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Quotation_Request">
+        <MappingFragment StoreEntitySet="Quotation_Request">
+          <ScalarProperty Name="req_id" ColumnName="req_id" />
+          <ScalarProperty Name="prd_id" ColumnName="prd_id" />
+          <ScalarProperty Name="prd_quantity" ColumnName="prd_quantity" />
+          <ScalarProperty Name="order_deadline" ColumnName="order_deadline" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotation_Response">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Quotation_Response">
+        <MappingFragment StoreEntitySet="Quotation_Response">
+          <ScalarProperty Name="req_id" ColumnName="req_id" />
+          <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+          <ScalarProperty Name="price_perunit" ColumnName="price_perunit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+          <ScalarProperty Name="vendor_name" ColumnName="vendor_name" />
+          <ScalarProperty Name="vendor_email" ColumnName="vendor_email" />
+          <ScalarProperty Name="vendor_password" ColumnName="vendor_password" />
+          <ScalarProperty Name="vendor_contact" ColumnName="vendor_contact" />
+          <ScalarProperty Name="vendor_licenseNo" ColumnName="vendor_licenseNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

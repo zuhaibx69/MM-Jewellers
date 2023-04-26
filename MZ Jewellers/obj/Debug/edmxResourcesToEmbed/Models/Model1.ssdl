@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JewelleryManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="prd_id" />
+    </Key>
+    <Property Name="prd_id" Type="int" Nullable="false" />
+    <Property Name="prd_quantity" Type="int" Nullable="false" />
+    <Property Name="prd_price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jeweller">
+    <Key>
+      <PropertyRef Name="jeweller_id" />
+    </Key>
+    <Property Name="jeweller_id" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="jeweller_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="jeweller_password" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="order_id" />
+      <PropertyRef Name="payment_type" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="payment_type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="netprice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="prd_id" />
+    </Key>
+    <Property Name="prd_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prd_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prd_description" Type="varchar" MaxLength="50" />
+    <Property Name="prd_unitPrice" Type="int" Nullable="false" />
+    <Property Name="prd_unit" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseOrder">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="vendor_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Quotation_Request">
+    <Key>
+      <PropertyRef Name="req_id" />
+    </Key>
+    <Property Name="req_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prd_id" Type="int" />
+    <Property Name="prd_quantity" Type="int" Nullable="false" />
+    <Property Name="order_deadline" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quotation_Response">
+    <Key>
+      <PropertyRef Name="req_id" />
+      <PropertyRef Name="vendor_id" />
+    </Key>
+    <Property Name="req_id" Type="int" Nullable="false" />
+    <Property Name="vendor_id" Type="int" Nullable="false" />
+    <Property Name="price_perunit" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="vendor_id" />
+    </Key>
+    <Property Name="vendor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vendor_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vendor_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vendor_password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="vendor_contact" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="vendor_licenseNo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__Inventory__prd_i__403A8C7D">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prd_id" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="prd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__order_i__4D94879B">
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseOrder">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PurchaseO__order__49C3F6B7">
+    <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Quotation_Request">
+        <PropertyRef Name="req_id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PurchaseO__vendo__4AB81AF0">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="vendor_id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="vendor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Quotation__prd_i__4316F928">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prd_id" />
+      </Principal>
+      <Dependent Role="Quotation_Request">
+        <PropertyRef Name="prd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Quotation__req_i__45F365D3">
+    <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="1" />
+    <End Role="Quotation_Response" Type="Self.Quotation_Response" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quotation_Request">
+        <PropertyRef Name="req_id" />
+      </Principal>
+      <Dependent Role="Quotation_Response">
+        <PropertyRef Name="req_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Quotation__vendo__46E78A0C">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="Quotation_Response" Type="Self.Quotation_Response" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="vendor_id" />
+      </Principal>
+      <Dependent Role="Quotation_Response">
+        <PropertyRef Name="vendor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JewelleryManagementSystemModelStoreContainer">
+    <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jeweller" EntityType="Self.Jeweller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quotation_Request" EntityType="Self.Quotation_Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quotation_Response" EntityType="Self.Quotation_Response" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Inventory__prd_i__403A8C7D" Association="Self.FK__Inventory__prd_i__403A8C7D">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Inventory" EntitySet="Inventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__order_i__4D94879B" Association="Self.FK__Payment__order_i__4D94879B">
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PurchaseO__order__49C3F6B7" Association="Self.FK__PurchaseO__order__49C3F6B7">
+      <End Role="Quotation_Request" EntitySet="Quotation_Request" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PurchaseO__vendo__4AB81AF0" Association="Self.FK__PurchaseO__vendo__4AB81AF0">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Quotation__prd_i__4316F928" Association="Self.FK__Quotation__prd_i__4316F928">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Quotation_Request" EntitySet="Quotation_Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Quotation__req_i__45F365D3" Association="Self.FK__Quotation__req_i__45F365D3">
+      <End Role="Quotation_Request" EntitySet="Quotation_Request" />
+      <End Role="Quotation_Response" EntitySet="Quotation_Response" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Quotation__vendo__46E78A0C" Association="Self.FK__Quotation__vendo__46E78A0C">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="Quotation_Response" EntitySet="Quotation_Response" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
