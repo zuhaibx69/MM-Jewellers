@@ -62,6 +62,7 @@ create table Quotation_Request
 	prd_quantity int not null,
 	order_deadline date not null
 );
+
 insert into Quotation_Request values(1,5,'5/5/2002')
 select * from Quotation_Request
 

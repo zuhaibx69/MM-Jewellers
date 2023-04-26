@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Login";
     Layout = null;
 
@@ -73,6 +74,117 @@
         <script src="~/assests/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
     </html>*@
+@*<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Jewellery Management System</title>
+        <link href="~/assests/css/Login.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <section>
+            <div class="main-form-container">
+                <div id="form_section" class="form-container">
+                    <div class="login-form form-wraper ">
+                        <div>
+                            @using (Html.BeginForm("JewellerLogin", "Wholesaler", FormMethod.Post))
+                            {
+                                <div class="form-title">
+                                    <h2>Jeweller Login</h2>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="box">
+                                        <span>
+                                            @Html.TextBoxFor(model => model.jeweller_name, new { @class = "myInput", @placeholder = "Enter User Name" })
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="box">
+                                        <span>
+                                            @Html.TextBoxFor(model => model.jeweller_password, new { @class = "myInput", @placeholder = "Enter Password", @type = "password" })
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action-button">
+                                    <input type="submit" value="Login">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="signUp-form form-wraper">
+                        <div>
+                            @using (Html.BeginForm("VendorLogin", "Wholesaler", FormMethod.Post))
+                            {
+                                <div class="form-title">
+                                    <h2>Vendor Login</h2>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="box">
+                                        <span>
+                                            @Html.TextBoxFor(Model => Model.jeweller_name, new { @class = "myInput", @placeholder = "Enter Email", @type = "email" })
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="box">
+                                        <span>
+                                            @Html.TextBoxFor(model => model.jeweller_password, new { @class = "myInput", @placeholder = "Enter Password", @type = "password" })
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action-button">
+                                    <input type="submit" value="Login">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div id="multiple-btn" class="bg-btn-container">
+                    <div class="action-button">
+                        <button>Login</button>
+                    </div>
+                    <div class="action-button">
+                        <button>Sign Up</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <script>
+            const inputs = document.querySelectorAll("input");
+            inputs.forEach(function (input) {
+                input.addEventListener("focus", function () {
+                    const parentElement = input.parentElement.parentElement;
+                    parentElement.classList.add("box-animation");
+                });
+                input.addEventListener("blur", function () {
+                    const parentElement = input.parentElement.parentElement;
+                    parentElement.classList.remove("box-animation");
+                });
+            });
+
+            const buttons = document.querySelectorAll("#multiple-btn button");
+            const form_container = document.getElementById('form_section')
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    form_container.classList.toggle("left-right");
+
+                });
+            });
+
+        </script>
+
+    </body>
+    </html>*@
+
+@*-------------------------------------------------------------------------------------------*@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -88,7 +200,6 @@
             <div id="form_section" class="form-container">
                 <div class="login-form form-wraper ">
                     <div>
-                        @model MZ_Jewellers.Models.Jeweller
                         @using (Html.BeginForm("JewellerLogin", "Wholesaler", FormMethod.Post))
                         {
                             <div class="form-title">
@@ -98,14 +209,14 @@
                             <div class="input-group">
                                 <div class="box">
                                     <span>
-                                        @Html.TextBoxFor(model => model.jeweller_name, new { @class = "myInput", @placeholder = "Enter User Name" })
+                                        <input name="uname" placeholder="Enter User Name" class="myInput" type="text" required />
                                     </span>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <div class="box">
                                     <span>
-                                        @Html.TextBoxFor(model => model.jeweller_password, new { @class = "myInput", @placeholder = "Enter Password", @type = "password" })
+                                        <input name="pwd" placeholder="Enter Password" class="myInput" type="password" required />
                                     </span>
                                 </div>
                             </div>
@@ -117,8 +228,7 @@
                 </div>
                 <div class="signUp-form form-wraper">
                     <div>
-                        
-                        @using (Html.BeginForm("JewellerLogin", "Wholesaler", FormMethod.Post))
+                        @using (Html.BeginForm("VendorLogin", "Wholesaler", FormMethod.Post))
                         {
                             <div class="form-title">
                                 <h2>Vendor Login</h2>
@@ -127,14 +237,14 @@
                             <div class="input-group">
                                 <div class="box">
                                     <span>
-                                        @Html.TextBoxFor(model => model.jeweller_name, new { @class = "myInput", @placeholder = "Enter Email", @type="email" })
+                                        <input name="email" placeholder="Enter your Email" class="myInput" type="email" required />
                                     </span>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <div class="box">
                                     <span>
-                                        @Html.TextBoxFor(model => model.jeweller_password, new { @class = "myInput", @placeholder = "Enter Password", @type = "password" })
+                                        <input name="pwd" placeholder="Enter Password" class="myInput" type="password" required />
                                     </span>
                                 </div>
                             </div>

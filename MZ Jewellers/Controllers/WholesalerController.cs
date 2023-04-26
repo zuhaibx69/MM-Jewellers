@@ -10,7 +10,7 @@ namespace MZ_Jewellers.Controllers
 {
     public class WholesalerController : Controller
     {
-        JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
+        readonly JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
         // GET: Wholesaler
         public ActionResult Index()
         {
@@ -20,20 +20,13 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            dynamic model = new ExpandoObject();
-            Jeweller j = new Jeweller();
-            Vendor v = new Vendor();
-            model.Jeweller = j;
-            model.Vendor = v;
-
             return View();
         }
 
         [HttpPost]
-        public ActionResult JewellerLogin(Jeweller jewelers)
+        public ActionResult JewellerLogin(string uname, string pwd)
         {
-
-            var s = db.Jewellers.Where(x=> x.jeweller_name == jewelers.jeweller_name && x.jeweller_password == jewelers.jeweller_password).FirstOrDefault();
+            var s = db.Jewellers.Where(x=> x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
 
             if(s != null)
             {
@@ -43,14 +36,13 @@ namespace MZ_Jewellers.Controllers
         }
 
         [HttpPost]
-        public ActionResult VendorLogin(Jeweller jewelers)
+        public ActionResult VendorLogin(string email, string pwd)
         {
-
-            var s = db.Jewellers.Where(x => x.jeweller_name == jewelers.jeweller_name && x.jeweller_password == jewelers.jeweller_password).FirstOrDefault();
+            var s = db.Vendors.Where(x => x.vendor_email == email && x.vendor_password == pwd).FirstOrDefault();
 
             if (s != null)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Vendor");
             }
             return RedirectToAction("");
         }
@@ -69,11 +61,14 @@ namespace MZ_Jewellers.Controllers
         [HttpPost]
         public ActionResult CreateRFQ(int qty, DateTime Deadlinedate) 
         {
-            Quotation_Request qr = new Quotation_Request();
-            qr.prd_id = 1;
-            qr.prd_quantity = qty;
-            qr.order_deadline = Deadlinedate.Date;
-            var s = db.Quotation_Request.Add(qr);
+            Quotation_Request qr = new Quotation_Request
+            {
+                prd_id = 1,
+                prd_quantity = qty,
+                order_deadline = Deadlinedate.Date
+            };
+            
+            db.Quotation_Request.Add(qr);
             db.SaveChanges();
 
             return View();
