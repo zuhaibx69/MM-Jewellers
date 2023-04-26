@@ -79,8 +79,8 @@ create table Quotation_Response
 create table PurchaseOrder
 (
 	order_id int foreign key references Quotation_Request(req_id) primary key,
-	vendor_id int foreign key references Vendor(vendor_id)
-
+	vendor_id int foreign key references Vendor(vendor_id),
+	total_amount int not null
 );
 
 create table Payment
