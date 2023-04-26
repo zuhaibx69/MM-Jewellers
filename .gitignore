@@ -235,3 +235,4 @@ _Pvt_Extensions
 # FAKE - F# Make
 MZ Jewellers/bin/MZ Jewellers.dll.config
 MZ Jewellers/Web.config
+*.config
