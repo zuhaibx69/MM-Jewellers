@@ -52,6 +52,11 @@ namespace MZ_Jewellers.Controllers
             return View();
         }
 
+        public ActionResult Vendors()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult CreateRFQ()
         {
