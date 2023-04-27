@@ -236,3 +236,20 @@ _Pvt_Extensions
 MZ Jewellers/bin/MZ Jewellers.dll.config
 MZ Jewellers/Web.config
 *.config
+*.dll
+*.dll
+*.xml
+*.config
+*.pdb
+*.csproj
+*.user
+*.cache
+*.pdb
+*.dll
+*.transform
+*.nupkg
+*.dll
+*.txt
+*.psd1
+*.ps1
+*.exe
