@@ -46,8 +46,5 @@ namespace MZ_Jewellers.Controllers
             return RedirectToAction("Index","Vendor");
         }
 
-        
-
-
     }
 }
