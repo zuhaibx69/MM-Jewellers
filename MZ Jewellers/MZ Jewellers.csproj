@@ -130,7 +130,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
-    <Compile Include="Controllers\asdasController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\WholesalerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2052,11 +2051,6 @@
     <Content Include="Views\Wholesaler\CreateRFQ.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Shared\_VendorLayout.cshtml" />
-    <Content Include="Views\asdas\Create.cshtml" />
-    <Content Include="Views\asdas\Delete.cshtml" />
-    <Content Include="Views\asdas\Details.cshtml" />
-    <Content Include="Views\asdas\Edit.cshtml" />
-    <Content Include="Views\asdas\Index.cshtml" />
     <Content Include="Views\Wholesaler\ViewResponse.cshtml" />
   </ItemGroup>
   <ItemGroup>
