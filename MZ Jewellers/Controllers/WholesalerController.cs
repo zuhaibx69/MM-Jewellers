@@ -11,18 +11,15 @@ namespace MZ_Jewellers.Controllers
     public class WholesalerController : Controller
     {
         readonly JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
+
         // GET: Wholesaler
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult RFQ()
-        {
-            return View();
-        }
-
-        public ActionResult Vendors()
+        public ActionResult Orders()
         {
             return View();
         }

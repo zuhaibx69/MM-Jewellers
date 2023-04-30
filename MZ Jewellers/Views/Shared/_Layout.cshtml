@@ -45,49 +45,6 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed"
-                   href=""
-                   data-toggle="collapse"
-                   data-target="#collapseSale"
-                   aria-expanded="true"
-                   aria-controls="collapseSale">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>SALES</span>
-                </a>
-                <div id="collapseSale"
-                     class="collapse"
-                     aria-labelledby="headingTwo"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Sales</a>
-                        <a class="collapse-item" href="#">Product</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"
-                   href="#"
-                   data-toggle="collapse"
-                   data-target="#collapseLogistics"
-                   aria-expanded="true"
-                   aria-controls="collapseLogistics">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Logistics</span>
-                </a>
-                <div id="collapseLogistics"
-                     class="collapse"
-                     aria-labelledby="headingTwo"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Purchase</a>
-                        <a class="collapse-item" href="#">Vendor</a>
-                        <a class="collapse-item" href="#">Inventory</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"
                    href="#"
                    data-toggle="collapse"
                    data-target="#collapseRFQ"
@@ -101,19 +58,34 @@
                      aria-labelledby="headingTwo"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="RFQ">LIST RFQ</a>
+                        <a class="collapse-item" href="CreateRFQ">New RFQ</a>
+                        <a class="collapse-item" href="Orders">Purchase Orders</a>
                         <a class="collapse-item" href="ViewResponse">List Response</a>
                     </div>
                 </div>
             </li>
 
+            <hr class="sidebar-divider" />
+
             <li class="nav-item">
                 <a class="nav-link collapsed"
-                   href="Vendors">
+                   href="#"
+                   data-toggle="collapse"
+                   data-target="#collapseVendor"
+                   aria-expanded="true"
+                   aria-controls="collapseVendor">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Add Vendor</span>
+                    <span>Vendor</span>
                 </a>
-
+                <div id="collapseVendor"
+                     class="collapse"
+                     aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Add New Vendor</a>
+                        <a class="collapse-item" href="#">Approve Vendor</a>
+                    </div>
+                </div>
             </li>
 
         </ul>
@@ -198,14 +170,6 @@
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2021</span>
-            </div>
-        </div>
-    </footer>
     <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->

@@ -43,7 +43,7 @@ namespace MZ_Jewellers.Controllers
             db.Quotation_Response.Add(qr);
             db.SaveChanges();
 
-            return RedirectToAction("Index","Vendor");
+            return RedirectToAction("Index");
         }
 
     }

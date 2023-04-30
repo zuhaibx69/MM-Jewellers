@@ -2048,7 +2048,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Wholesaler\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
-    <Content Include="Views\Wholesaler\RFQ.cshtml" />
+    <Content Include="Views\Wholesaler\Orders.cshtml" />
     <Content Include="Views\Wholesaler\CreateRFQ.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Shared\_VendorLayout.cshtml" />
