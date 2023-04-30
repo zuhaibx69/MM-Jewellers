@@ -181,6 +181,7 @@
     <Content Include="assests\css\sb-admin-2.min.css" />
     <Content Include="assests\css\site.css" />
     <Content Include="assests\css\Login.css" />
+    <Content Include="assests\images\Jewellery.jpg" />
     <Content Include="assests\images\undraw_profile.svg" />
     <Content Include="assests\js\Login.js" />
     <Content Include="assests\js\site.js" />

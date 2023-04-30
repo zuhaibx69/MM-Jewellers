@@ -10,7 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("https://www.yudiz.com/codepen/animation-form/banner.jpg");
+    background-image: url("../images/Jewellery.jpg");
     background-size: cover;
     background-position: center;
     min-height: 700px;

@@ -82,6 +82,12 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult ViewResponse()
         {
+            ViewBag.QRlist = db.Quotation_Request.ToList();
+            ViewBag.QRESlist = db.Quotation_Response.ToList();
+            ViewBag.Prodlist = db.Products.ToList();
+            Quotation_Request s = new Quotation_Request();
+            string a = s.order_deadline.Date.ToString();
+
             return View();
         }
     }

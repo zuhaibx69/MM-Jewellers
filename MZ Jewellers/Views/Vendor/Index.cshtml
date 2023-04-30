@@ -40,7 +40,7 @@
                                         <td style="width:20%">
                                             <div class="form-group" style=" display: flex; align-items: flex-end;">
                                                 @*<input class="form-control" name="price_perunit" type="number">*@
-                                                <input type="number" class="form-control" name="price_perunit" id="price_perunit_@i" />
+                                                <input type="number" class="form-control" placeholder="1" name="price_perunit" id="price_perunit_@i" min="1" required/>
                                                 <input type="hidden" id="hiddenreqid_@i" value="@ViewBag.QRlist[i].req_id" />
                                                 <label for="inputdefault" style="margin-left: 6px">PKR</label>
                                             </div>
