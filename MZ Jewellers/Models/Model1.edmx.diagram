@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4d9a89e41c8943f29e6838f8c8e3814d" Name="Diagram1" ZoomLevel="83">
+      <Diagram DiagramId="4d9a89e41c8943f29e6838f8c8e3814d" Name="Diagram1" ZoomLevel="109">
         <EntityTypeShape EntityType="JewelleryManagementSystemModel.Inventory" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JewelleryManagementSystemModel.Jeweller" Width="1.5" PointX="7.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JewelleryManagementSystemModel.Payment" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />

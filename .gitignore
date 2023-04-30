@@ -253,3 +253,9 @@ MZ Jewellers/Web.config
 *.psd1
 *.ps1
 *.exe
+*.exe
+*.exe
+*.ps1
+*.psm1
+*.psd1
+*.dll

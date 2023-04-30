@@ -76,6 +76,10 @@ create table Quotation_Response
 
 );
 
+select * from Quotation_Response
+
+
+
 create table PurchaseOrder
 (
 	order_id int foreign key references Quotation_Request(req_id) primary key,

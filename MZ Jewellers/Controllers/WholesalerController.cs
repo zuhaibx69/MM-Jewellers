@@ -26,9 +26,9 @@ namespace MZ_Jewellers.Controllers
         [HttpPost]
         public ActionResult JewellerLogin(string uname, string pwd)
         {
-            var s = db.Jewellers.Where(x=> x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
+            var s = db.Jewellers.Where(x => x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
 
-            if(s != null)
+            if (s != null)
             {
                 return RedirectToAction("Index");
             }
@@ -59,7 +59,7 @@ namespace MZ_Jewellers.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateRFQ(int qty, DateTime Deadlinedate) 
+        public ActionResult CreateRFQ(int qty, DateTime Deadlinedate)
         {
             Quotation_Request qr = new Quotation_Request
             {
@@ -67,12 +67,17 @@ namespace MZ_Jewellers.Controllers
                 prd_quantity = qty,
                 order_deadline = Deadlinedate.Date
             };
-            
+
             db.Quotation_Request.Add(qr);
             db.SaveChanges();
 
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ViewResponse()
+        {
+            return View();
+        }
     }
 }

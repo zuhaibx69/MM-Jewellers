@@ -42,15 +42,15 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed"
-                   href="#"
+                   href=""
                    data-toggle="collapse"
-                   data-target="#collapseTwo"
+                   data-target="#collapseOne"
                    aria-expanded="true"
-                   aria-controls="collapseTwo">
+                   aria-controls="collapseOne">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>SALES</span>
                 </a>
-                <div id="collapseTwo"
+                <div id="collapseOne"
                      class="collapse"
                      aria-labelledby="headingTwo"
                      data-parent="#accordionSidebar">
@@ -169,8 +169,8 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                        @RenderBody()
-                    </div>
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
@@ -228,10 +228,21 @@
     <!-- Page level custom scripts -->
     <script src="~/assests/js/demo/chart-area-demo.js"></script>
     <script src="~/assests/js/demo/chart-pie-demo.js"></script>
-
+    <script src="~/assests/js/bootstrap.min.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+
+
+        function toggleDropdown() {
+            var dropdown = document.getElementById("collapseTwo");
+            dropdown.classList.toggle("show");
+        }
+
+    </script>
+
 </body>
 </html>
