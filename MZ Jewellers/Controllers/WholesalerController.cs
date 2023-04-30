@@ -17,36 +17,6 @@ namespace MZ_Jewellers.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult JewellerLogin(string uname, string pwd)
-        {
-            var s = db.Jewellers.Where(x => x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
-
-            if (s != null)
-            {
-                return RedirectToAction("Index");
-            }
-            return RedirectToAction("");
-        }
-
-        [HttpPost]
-        public ActionResult VendorLogin(string email, string pwd)
-        {
-            var s = db.Vendors.Where(x => x.vendor_email == email && x.vendor_password == pwd).FirstOrDefault();
-
-            if (s != null)
-            {
-                return RedirectToAction("Index", "Vendor");
-            }
-            return RedirectToAction("");
-        }
-
         public ActionResult RFQ()
         {
             return View();
