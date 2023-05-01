@@ -23,12 +23,14 @@ create table Vendor
 	vendor_email varchar(50) not null unique,
 	vendor_password varchar(20) not null,
 	vendor_contact varchar(11) not null unique,
-	vendor_licenseNo varchar(10)
+	vendor_licenseNo varchar(10),
+	vendor_licenseImg image,
+	vendor_status varchar(12) default 'Non-verified'
 
 );
-insert into Vendor Values('zuhaib','zuhaib@gmail.com','123','04323123121','V1')
-select * from Vendor
 
+insert into Vendor Values('zuhaib','zuhaib@gmail.com','123','04323123125','V1', null, 'Verified')
+select * from Vendor
 
 create table Product
 (
@@ -63,7 +65,6 @@ create table Quotation_Request
 	order_deadline date not null
 );
 
-insert into Quotation_Request values(1,5,'5/5/2002')
 select * from Quotation_Request
 
 create table Quotation_Response
@@ -79,15 +80,15 @@ create table Quotation_Response
 select * from Quotation_Response
 
 
-
 create table PurchaseOrder
 (
 	order_id int foreign key references Quotation_Request(req_id) primary key,
 	vendor_id int foreign key references Vendor(vendor_id),
-	total_amount int not null,
-	Remaining_amount int not null,
+	total_amount int not null
 
 );
+
+select * from PurchaseOrder
 
 create table Payment
 (
@@ -98,4 +99,6 @@ create table Payment
 	primary key(order_id , payment_type)
 
 );
+
+select * from Payment
 
