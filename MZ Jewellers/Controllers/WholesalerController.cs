@@ -52,6 +52,8 @@ namespace MZ_Jewellers.Controllers
             ViewBag.QRlist = db.Quotation_Request.ToList();
             ViewBag.QRESlist = db.Quotation_Response.ToList();
             ViewBag.Prodlist = db.Products.ToList();
+            ViewBag.Vendor = db.Vendors.ToList();
+
             Quotation_Request s = new Quotation_Request();
             string a = s.order_deadline.Date.ToString();
 
