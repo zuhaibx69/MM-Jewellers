@@ -1879,6 +1879,7 @@
     <Content Include="assests\lib\jquery\dist\jquery.min.js" />
     <Content Include="assests\lib\jquery\LICENSE.txt" />
     <Content Include="assests\js\bootstrap.min.js" />
+    <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -2053,6 +2054,14 @@
     <Content Include="Views\Shared\_VendorLayout.cshtml" />
     <Content Include="Views\Wholesaler\ViewResponse.cshtml" />
     <Content Include="Views\Wholesaler\AddVendor.cshtml" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="webfonts\fa-v4compatibility.ttf" />
+    <Content Include="webfonts\fa-v4compatibility.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -247,3 +247,86 @@ D:\Projects\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.csproj.CoreCompileI
 D:\Projects\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.csproj.CopyComplete
 D:\Projects\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.dll
 D:\Projects\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.pdb
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\MZ Jewellers.dll.config
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\MZ Jewellers.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\MZ Jewellers.pdb
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\csc.exe
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\csc.exe.config
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\csc.rsp
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\csi.exe
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\csi.exe.config
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\csi.rsp
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.AppContext.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Console.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.IO.Compression.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Net.Http.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.ValueTuple.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\vbc.exe
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\vbc.exe.config
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\vbc.rsp
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\VBCSCompiler.exe
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Antlr3.Runtime.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\EntityFramework.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\EntityFramework.SqlServer.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Newtonsoft.Json.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Helpers.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Mvc.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Optimization.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Razor.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.WebPages.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.WebPages.Razor.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\WebGrease.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\EntityFramework.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\EntityFramework.SqlServer.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Helpers.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Mvc.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Optimization.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.Razor.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.WebPages.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\System.Web.WebPages.Razor.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Newtonsoft.Json.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Antlr3.Runtime.pdb
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.csproj.AssemblyReference.cache
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.csproj.CoreCompileInputs.cache
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.csproj.CopyComplete
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.dll
+C:\Users\Raza\Documents\GitHub\MM-Jewellers\MZ Jewellers\obj\Debug\MZ Jewellers.pdb

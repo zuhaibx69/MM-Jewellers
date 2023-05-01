@@ -7,7 +7,7 @@
 
 <div class="row">
     <!-- Content Column -->
-    <div class="col-lg-4 mb-4">
+    <div class="col-lg-12 mb-4">
         <!-- Project Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -18,15 +18,15 @@
                     @using (Html.BeginForm("AddVendor", "Wholesaler", FormMethod.Post))
                      {
                         <div class="form-row pt-3">
-                            <div class="form-group col-md-12 px-3">
+                            <div class="form-group col-lg-4 col-12 px-3">
                                 <label for="vname">Vendor Name</label>
                                 <input type="text" class="form-control" id="vname" name="vname" required>
                             </div>
-                            <div class="form-group col-md-12 px-3">
+                            <div class="form-group col-lg-4 col-12 pl-2">
                                 <label for="vemail">Vendor Email</label>
                                 <input type="email" class="form-control" id="vemail" name="vemail" required>
                             </div>
-                            <div class="form-group col-md-12 px-3">
+                            <div class="form-group col-lg-4 col-12 pl-2">
                                 <label for="vnum">Vendor Contact No.</label>
                                 <input type="tel" class="form-control" id="vnum" name="vnum"
                                        placeholder="03XXXXXXXXX" pattern="03[0-4]{1}[0-9]{8}" required>
