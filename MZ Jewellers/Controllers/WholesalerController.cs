@@ -59,5 +59,29 @@ namespace MZ_Jewellers.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult AddVendor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddVendor(string vname, string vemail, string vnum)
+        {
+            Vendor v = new Vendor
+            {
+                vendor_name = vname,
+                vendor_email = vemail,
+                vendor_contact = vnum,
+                vendor_password = vemail.Split('@')[0]
+            };
+
+            db.Vendors.Add(v);
+            db.SaveChanges();
+
+            return View();
+        }
+
     }
 }

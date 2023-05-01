@@ -2051,12 +2051,8 @@
     <Content Include="Views\Wholesaler\CreateRFQ.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Shared\_VendorLayout.cshtml" />
-    <Content Include="Views\asdas\Create.cshtml" />
-    <Content Include="Views\asdas\Delete.cshtml" />
-    <Content Include="Views\asdas\Details.cshtml" />
-    <Content Include="Views\asdas\Edit.cshtml" />
-    <Content Include="Views\asdas\Index.cshtml" />
     <Content Include="Views\Wholesaler\ViewResponse.cshtml" />
+    <Content Include="Views\Wholesaler\AddVendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
