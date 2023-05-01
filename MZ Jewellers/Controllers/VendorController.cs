@@ -9,20 +9,38 @@ namespace MZ_Jewellers.Controllers
 {
     public class VendorController : Controller
     {
-        JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
-
-        // GET: Vendor
+        JewelleryManagementSystemEntities1 db = new JewelleryManagementSystemEntities1();
 
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.QRlist = db.Quotation_Request.ToList();
-            ViewBag.QRESlist = db.Quotation_Response.ToList();
-            ViewBag.Prodlist = db.Products.ToList();
-            Quotation_Request s = new Quotation_Request();
-            string a = s.order_deadline.Date.ToString();
-            return View();
+            if (Session["JewellerId"] != null || Session["VendorId"] != null)
+            {
+                if (Session["VendorId"] != null)
+                {
+                    ViewBag.QRlist = db.Quotation_Request.ToList();
+                    ViewBag.QRESlist = db.Quotation_Response.ToList();
+                    ViewBag.Prodlist = db.Products.ToList();
+                    Quotation_Request s = new Quotation_Request();
+                    string a = s.order_deadline.Date.ToString();
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Wholesaler");
+                }
+            }
+            return RedirectToAction("Login", "Accounts");
+
         }
+
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Accounts");
+        }
+
 
         [HttpPost]
         public ActionResult SendResponse(string id, string price_perunit)
@@ -37,7 +55,7 @@ namespace MZ_Jewellers.Controllers
             ViewBag.Prodlist = db.Products.ToList();
 
             Quotation_Response qr = new Quotation_Response();
-            qr.vendor_id = 1;
+            qr.vendor_id = (int)Session["VendorId"];
             qr.price_perunit = tprice_perunit;
             qr.req_id = tid;
             db.Quotation_Response.Add(qr);

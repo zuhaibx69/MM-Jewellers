@@ -22,6 +22,7 @@ namespace MZ_Jewellers.Models
     
         public int order_id { get; set; }
         public Nullable<int> vendor_id { get; set; }
+        public int total_amount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }

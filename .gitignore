@@ -259,3 +259,9 @@ MZ Jewellers/Web.config
 *.psm1
 *.psd1
 *.dll
+*.cache
+MZ Jewellers/bin/MZ Jewellers.dll
+MZ Jewellers/bin/MZ Jewellers.pdb
+MZ Jewellers/obj/Debug/MZ Jewellers.csproj.CoreCompileInputs.cache
+MZ Jewellers/obj/Debug/MZ Jewellers.dll
+MZ Jewellers/obj/Debug/MZ Jewellers.pdb

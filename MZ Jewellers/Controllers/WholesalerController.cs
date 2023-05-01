@@ -8,15 +8,33 @@ using System.Web.Mvc;
 
 namespace MZ_Jewellers.Controllers
 {
+
     public class WholesalerController : Controller
     {
-        readonly JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
+        readonly JewelleryManagementSystemEntities1 db = new JewelleryManagementSystemEntities1();
 
         // GET: Wholesaler
 
         public ActionResult Index()
         {
-            return View();
+            if (Session["JewellerId"] != null || Session["VendorId"] != null)
+            {
+                if (Session["JewellerId"] != null)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Vendor");
+                }
+            }
+            return RedirectToAction("Login","Accounts");
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Accounts");
         }
 
         public ActionResult Orders()
@@ -53,6 +71,7 @@ namespace MZ_Jewellers.Controllers
             ViewBag.QRESlist = db.Quotation_Response.ToList();
             ViewBag.Prodlist = db.Products.ToList();
             ViewBag.Vendor = db.Vendors.ToList();
+            ViewBag.PurchaseOrder = db.PurchaseOrders.ToList();
 
             Quotation_Request s = new Quotation_Request();
             string a = s.order_deadline.Date.ToString();
@@ -81,6 +100,34 @@ namespace MZ_Jewellers.Controllers
             db.SaveChanges();
 
             return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ViewResponse(int order_id, int vendor_id, int total_amount, string payment_type, int netprice)
+        {
+            PurchaseOrder q = new PurchaseOrder
+            {
+                order_id = order_id,
+                vendor_id = vendor_id,
+                total_amount = total_amount
+            };
+            db.PurchaseOrders.Add(q);
+
+            db.SaveChanges();
+
+            Payment p = new Payment
+            {
+                order_id = order_id,
+                payment_type = payment_type,
+                netprice = netprice
+            };
+            db.Payments.Add(p);
+
+            db.SaveChanges();
+
+
+            return RedirectToAction("ViewResponse");
         }
 
     }

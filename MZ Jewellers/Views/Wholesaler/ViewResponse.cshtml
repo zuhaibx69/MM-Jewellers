@@ -1,8 +1,6 @@
 ﻿
 @{
     ViewBag.Title = "ViewResponse";
-    int price = 0;
-    int id = 0;
 }
 
 <div class="container">
@@ -13,6 +11,7 @@
                 <table class="table mb-0" id="tblstudentDetails">
                     <thead>
                         <tr>
+                            <th scope="col">Req ID</th>
                             <th scope="col">Product</th>
                             <th scope="col">Description</th>
                             <th scope="col">Quantity</th>
@@ -26,7 +25,12 @@
                             for (int i = 0; i < ViewBag.QRlist.Count; i++)
                             {
 
+                                var specialItem = ((List<MZ_Jewellers.Models.PurchaseOrder>)ViewBag.PurchaseOrder).Find(item => item.order_id == ViewBag.QRlist[i].req_id);
+
+                                if (specialItem == null)
+                                {
                                 <tr data-toggle="collapse" data-target="#child-row-@i">
+                                    <td>@ViewBag.QRlist[i].req_id</td>
                                     <th scope="row" style="color: #666666;">@ViewBag.Prodlist[ViewBag.QRlist[i].prd_id - 1].prd_name</th>
                                     <td>Raw Material</td>
                                     <td>@ViewBag.QRlist[i].prd_quantity</td>
@@ -38,13 +42,9 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Product</th>
-                                                    <th scope="col">Description</th>
-                                                    <th scope="col">Quantity</th>
-                                                    <th scope="col">Unit</th>
-                                                    <th scope="col">Order Deadline</th>
-                                                    <th scope="col">Vendor Id</th>
+                                                    <th></th>
                                                     <th scope="col">Vendor Name</th>
+                                                    <th scope="col">Vendor Email</th>
                                                     <th scope="col">Price</th>
                                                     <th></th>
                                                 </tr>
@@ -61,18 +61,17 @@
                                                         for (int j = 0; j < models.Count; j++)
                                                         {
                                                             <tr>
-                                                                <th scope="row" style="color: #666666;">@ViewBag.Prodlist[ViewBag.QRlist[i].prd_id - 1].prd_name</th>
-                                                                <td>Raw Material</td>
-                                                                <td>@ViewBag.QRlist[i].prd_quantity</td>
-                                                                <td>Grams</td>
-                                                                <td>@ViewBag.QRlist[i].order_deadline.Date.ToString("d")</td>
-                                                                <td>@models[j].vendor_id</td>
+                                                                <td>@(j+1)</td>
                                                                 <td>
                                                                     @{
                                                                         List<MZ_Jewellers.Models.Vendor> Vmodels = new List<MZ_Jewellers.Models.Vendor>();
                                                                         Vmodels = ((List<MZ_Jewellers.Models.Vendor>)ViewBag.Vendor).Where(m => m.vendor_id == @models[j].vendor_id).ToList();
                                                                     }@Vmodels[0].vendor_name
                                                                 </td>
+                                                                <td>
+                                                                    @Vmodels[0].vendor_email
+                                                                </td>
+
                                                                 <td>@models[j].price_perunit PKR</td>
                                                                 <td>
                                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@models[j].price_perunit','@ViewBag.QRlist[i].prd_quantity','@ViewBag.QRlist[i].req_id','@models[j].vendor_id')"><i class="fas fa-check"></i></button>
@@ -80,14 +79,14 @@
                                                             </tr>
 
 
-                                                        }
+                                                                            }
 
 
 
 
-                                                    }
-                                                    else
-                                                    {
+                                                                        }
+                                                                        else
+                                                                        {
                                                         <tr>
                                                             <td></td>
                                                             <td></td>
@@ -98,7 +97,7 @@
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
-                                                    }
+                                                                        }
 
                                                 }
 
@@ -123,15 +122,11 @@
                                                 <div class="d-flex flex-column text-center pt-3">
                                                     <form>
                                                         <div class="form-group">
-                                                            <select class="form-select" id="PaymentselectBox" aria-label="Select">
-                                                                <option value="" selected>Open this select menu</option>
-                                                                <option value="Advance">Advance</option>
-                                                                <option value="Full Payment">Full Payment</option>
-                                                            </select>
+                                                            <h5>If you want to accept this quotation response then pay the 20% advance payment</h5>
                                                         </div>
-                                                        <div class="form-group" id="advance-option" style="display:none;">
-
-                                                            <input type="number" class="form-control" id="amount" name="advanceBox" value="202" disabled>
+                                                        <div class="form-group" id="advance-option">
+                                                            <label for="amount">Advance Payment</label>
+                                                            <input type="number" class="form-control" id="amount" name="amount" value="" disabled>
                                                         </div>
 
 
@@ -141,13 +136,12 @@
 
                                                 </div>
                                             </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
 
+                                }
                             }
                         }
 
@@ -157,7 +151,7 @@
         </div>
     </div>
 
-    
+
 
 
 
@@ -165,48 +159,20 @@
 
         var P_order_id= 0;
         var P_vendor_id=0;
-        var P_req_id=0; 
+        var P_req_id=0;
         var P_total_amount = 0;
         var P_payment_type = "";
         var P_netprice = 0;
 
         function myf(price,qty,req_id,vend_id){
-        
-             // Get the select box and input text elements
-  var optionsSelect = document.getElementById('PaymentselectBox');
-  var inputTextDiv = document.getElementById('advance-option');
 
-  optionsSelect.value = '';
-  inputTextDiv.style.display = 'none';
-
-  // Add an event listener to the select box
-  optionsSelect.addEventListener('change', function() {
-    // Check if the selected option is "Advance"
-    if (optionsSelect.value === 'Advance') {
-
-      // Show the input text div
-      inputTextDiv.style.display = 'block';
-
-      P_order_id= req_id;
-      P_vendor_id=vend_id;
-      P_total_amount = price * qty;
-      P_payment_type = "Advance";
-      P_netprice = ((P_total_amount) / 100) * 20;
-
-      console.log(P_order_id);
-      document.getElementById('amount').value = P_netprice;
-
-    }else if (optionsSelect.value === 'Full Payment') {
-
-      // Show the input text div
-      inputTextDiv.style.display = 'block';
-      document.getElementById('amount').value = price * qty;
-
-    } else {
-      // Hide the input text div
-      inputTextDiv.style.display = 'none';
-    }
-  });
+  
+            P_order_id = req_id;
+            P_vendor_id = vend_id;
+            P_total_amount = price * qty;
+            P_payment_type = "Advance";
+            P_netprice = Math.ceil(((P_total_amount) / 100) * 20);
+            document.getElementById('amount').value = P_netprice;
 
         }
 
@@ -229,11 +195,11 @@ parentRows.forEach(function(parentRow) {
 });
 
 function Payment(){
-       
+
         $.ajax({
 
             type: 'POST',
-            url: '@Url.Action("SendResponse", "Vendor")',
+            url: '@Url.Action("ViewResponse", "Wholesaler")',
             data: { order_id: P_order_id, vendor_id: P_vendor_id , total_amount: P_total_amount ,payment_type:P_payment_type , netprice:P_netprice },
             success: function(result) {
                     location.reload();

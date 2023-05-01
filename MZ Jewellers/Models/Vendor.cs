@@ -27,6 +27,8 @@ namespace MZ_Jewellers.Models
         public string vendor_password { get; set; }
         public string vendor_contact { get; set; }
         public string vendor_licenseNo { get; set; }
+        public byte[] vendor_licenseImg { get; set; }
+        public string vendor_status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrder> PurchaseOrders { get; set; }

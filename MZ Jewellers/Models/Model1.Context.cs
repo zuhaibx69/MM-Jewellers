@@ -13,10 +13,10 @@ namespace MZ_Jewellers.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JewelleryManagementSystemEntities : DbContext
+    public partial class JewelleryManagementSystemEntities1 : DbContext
     {
-        public JewelleryManagementSystemEntities()
-            : base("name=JewelleryManagementSystemEntities")
+        public JewelleryManagementSystemEntities1()
+            : base("name=JewelleryManagementSystemEntities1")
         {
         }
     

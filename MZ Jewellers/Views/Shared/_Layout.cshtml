@@ -131,7 +131,7 @@
                                data-toggle="dropdown"
                                aria-haspopup="true"
                                aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["JewellerName"]</span>
                                 <img class="img-profile rounded-circle"
                                      src="~/assests/images/undraw_profile.svg" />
                             </a>
@@ -195,7 +195,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    @Html.ActionLink("Logout", "LogOut","Wholesaler",new {@class= "btn btn-primary" })
                 </div>
             </div>
         </div>

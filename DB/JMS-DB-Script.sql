@@ -18,6 +18,7 @@ select * from Jeweller
 
 create table Vendor
 (
+
 	vendor_id int primary key identity(1,1),
 	vendor_name varchar(50) not null,
 	vendor_email varchar(50) not null unique,

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="JewelleryManagementSystemModelStoreContainer" CdmEntityContainer="JewelleryManagementSystemEntities">
+  <EntityContainerMapping StorageEntityContainer="JewelleryManagementSystemModelStoreContainer" CdmEntityContainer="JewelleryManagementSystemEntities1">
     <EntitySetMapping Name="Inventories">
       <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Inventory">
         <MappingFragment StoreEntitySet="Inventory">
@@ -44,6 +44,7 @@
         <MappingFragment StoreEntitySet="PurchaseOrder">
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -75,6 +76,8 @@
           <ScalarProperty Name="vendor_password" ColumnName="vendor_password" />
           <ScalarProperty Name="vendor_contact" ColumnName="vendor_contact" />
           <ScalarProperty Name="vendor_licenseNo" ColumnName="vendor_licenseNo" />
+          <ScalarProperty Name="vendor_licenseImg" ColumnName="vendor_licenseImg" />
+          <ScalarProperty Name="vendor_status" ColumnName="vendor_status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
