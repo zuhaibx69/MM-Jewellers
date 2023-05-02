@@ -19,9 +19,31 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            if (Session["JewellerId"] != null || Session["VendorId"] != null)
+            if (Session["VendorId"] != null)
             {
-                if (Session["VendorId"] != null)
+                return View();
+            }
+
+            else if (Session["JewellerId"] != null)
+            {
+                return RedirectToAction("Index", "Wholesaler");
+            }
+
+            return RedirectToAction("Login", "Accounts");
+
+        }
+
+        [HttpGet]
+        public ActionResult QuotationRequests()
+        {
+            if (Session["VendorId"] != null)
+            {
+                if (Session["VendorStatus"].ToString().Equals("Non-verified"))
+                {
+                    return View("VerifyAccount");
+                }
+
+                else if (Session["VendorStatus"].ToString().Equals("Verified"))
                 {
                     ViewBag.QRlist = db.Quotation_Request.ToList();
                     ViewBag.QRESlist = db.Quotation_Response.ToList();
@@ -30,20 +52,15 @@ namespace MZ_Jewellers.Controllers
                     string a = s.order_deadline.Date.ToString();
                     return View();
                 }
-                else
-                {
-                    return RedirectToAction("Index", "Wholesaler");
-                }
             }
+
+            else if (Session["JewellerId"] != null)
+            {
+                return RedirectToAction("Index", "Wholesaler");
+            }
+
             return RedirectToAction("Login", "Accounts");
 
-        }
-
-
-        public ActionResult LogOut()
-        {
-            Session.Abandon();
-            return RedirectToAction("Login", "Accounts");
         }
 
 
@@ -114,6 +131,12 @@ namespace MZ_Jewellers.Controllers
 
             return RedirectToAction("Login", "Accounts");
 
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Accounts");
         }
 
     }

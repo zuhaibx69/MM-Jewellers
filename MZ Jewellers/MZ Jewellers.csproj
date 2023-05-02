@@ -2064,6 +2064,7 @@
     <Content Include="webfonts\fa-v4compatibility.woff2" />
     <Content Include="Views\Vendor\VerifyAccount.cshtml" />
     <Content Include="Views\Vendor\VerifiedAccount.cshtml" />
+    <Content Include="Views\Vendor\QuotationRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
