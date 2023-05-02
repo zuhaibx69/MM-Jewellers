@@ -93,7 +93,8 @@ namespace MZ_Jewellers.Controllers
                 vendor_name = vname,
                 vendor_email = vemail,
                 vendor_contact = vnum,
-                vendor_password = vemail.Split('@')[0]
+                vendor_password = vemail.Split('@')[0],
+                vendor_status = "Non-verified"
             };
 
             db.Vendors.Add(v);

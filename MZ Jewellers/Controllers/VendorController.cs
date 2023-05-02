@@ -1,9 +1,14 @@
 ﻿using MZ_Jewellers.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace MZ_Jewellers.Controllers
 {
@@ -62,6 +67,53 @@ namespace MZ_Jewellers.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult VerifyAccount()
+        {
+            if (Session["VendorId"] != null)
+            {
+                if (Session["VendorStatus"].ToString().Equals("Non-verified"))
+                {
+                    return View();
+                }
+
+                else if (Session["VendorStatus"].ToString().Equals("Verified"))
+                {
+                    return View("VerifiedAccount");
+                }
+
+            }
+
+            return RedirectToAction("Login", "Accounts");
+
+        }
+
+        [HttpPost]
+        public ActionResult VerifyAccount(string licNo, HttpPostedFileBase licImg)
+        {
+            if (Session["VendorId"] != null)
+            {
+                byte[] imageData;
+
+                using (var binaryReader = new BinaryReader(licImg.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(licImg.ContentLength);
+                }
+
+                Vendor v = db.Vendors.Find(Session["VendorId"]);
+                v.vendor_licenseNo = licNo;
+                v.vendor_licenseImg = imageData;
+                Session["VendorStatus"] = v.vendor_status = "Verified";
+                db.Vendors.AddOrUpdate(v);
+                db.SaveChanges();
+                return RedirectToAction("VerifyAccount");
+
+            }
+
+            return RedirectToAction("Login", "Accounts");
+
         }
 
     }

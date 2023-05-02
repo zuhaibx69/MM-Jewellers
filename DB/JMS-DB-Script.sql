@@ -30,7 +30,6 @@ create table Vendor
 
 );
 
-insert into Vendor Values('zuhaib','zuhaib@gmail.com','123','04323123125','V1', null, 'Verified')
 select * from Vendor
 
 create table Product

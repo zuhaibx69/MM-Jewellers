@@ -42,11 +42,22 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed"
-                   href="RFQ">
+                   href="#"
+                   data-toggle="collapse"
+                   data-target="#collapseProfile"
+                   aria-expanded="true"
+                   aria-controls="collapseProfile">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>RFQ</span>
+                    <span>My Profile</span>
                 </a>
-
+                <div id="collapseProfile"
+                     class="collapse"
+                     aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="VerifyAccount">Verify Account</a>
+                    </div>
+                </div>
             </li>
 
         </ul>
