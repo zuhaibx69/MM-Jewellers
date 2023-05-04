@@ -26,7 +26,6 @@ namespace MZ_Jewellers.Models
         public int prd_unitPrice { get; set; }
         public string prd_unit { get; set; }
     
-        public virtual Inventory Inventory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quotation_Request> Quotation_Request { get; set; }
     }

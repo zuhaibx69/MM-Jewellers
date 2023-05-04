@@ -14,7 +14,7 @@ namespace MZ_Jewellers.Controllers
 {
     public class VendorController : Controller
     {
-        JewelleryManagementSystemEntities1 db = new JewelleryManagementSystemEntities1();
+        JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
 
         [HttpGet]
         public ActionResult Index()

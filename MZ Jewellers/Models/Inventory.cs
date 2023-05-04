@@ -14,10 +14,13 @@ namespace MZ_Jewellers.Models
     
     public partial class Inventory
     {
-        public int prd_id { get; set; }
+        public int order_id { get; set; }
+        public string prd_name { get; set; }
+        public string prd_description { get; set; }
         public int prd_quantity { get; set; }
-        public int prd_price { get; set; }
+        public string prd_unit { get; set; }
+        public int total_amount { get; set; }
     
-        public virtual Product Product { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
     }
 }

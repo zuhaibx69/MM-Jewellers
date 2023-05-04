@@ -85,7 +85,20 @@
             </div>
 
         </div>
+
+        }
     </section>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+
+    }
 
     <script>
         const inputs = document.querySelectorAll("input");

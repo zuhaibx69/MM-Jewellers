@@ -4,14 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JewelleryManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JewelleryManagementSystemModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Inventory">
           <Key>
-            <PropertyRef Name="prd_id" />
+            <PropertyRef Name="order_id" />
           </Key>
-          <Property Name="prd_id" Type="int" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="prd_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prd_description" Type="varchar" MaxLength="50" />
           <Property Name="prd_quantity" Type="int" Nullable="false" />
-          <Property Name="prd_price" Type="int" Nullable="false" />
+          <Property Name="prd_unit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="total_amount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Jeweller">
           <Key>
@@ -79,15 +82,15 @@
           <Property Name="vendor_licenseImg" Type="image" />
           <Property Name="vendor_status" Type="varchar" MaxLength="12" />
         </EntityType>
-        <Association Name="FK__Inventory__prd_i__412EB0B6">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK__Inventory__order__52593CB8">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="prd_id" />
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="order_id" />
             </Principal>
             <Dependent Role="Inventory">
-              <PropertyRef Name="prd_id" />
+              <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -163,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JewelleryManagementSystemModelStoreContainer">
+        <EntityContainer Name="JewelleryManagementSystemModel1StoreContainer">
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Jeweller" EntityType="Self.Jeweller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
@@ -172,8 +175,8 @@
           <EntitySet Name="Quotation_Request" EntityType="Self.Quotation_Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quotation_Response" EntityType="Self.Quotation_Response" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Inventory__prd_i__412EB0B6" Association="Self.FK__Inventory__prd_i__412EB0B6">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK__Inventory__order__52593CB8" Association="Self.FK__Inventory__order__52593CB8">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
           <AssociationSet Name="FK__Payment__order_i__4E88ABD4" Association="Self.FK__Payment__order_i__4E88ABD4">
@@ -205,15 +208,18 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="JewelleryManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="JewelleryManagementSystemModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Inventory">
           <Key>
-            <PropertyRef Name="prd_id" />
+            <PropertyRef Name="order_id" />
           </Key>
-          <Property Name="prd_id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="prd_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prd_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prd_quantity" Type="Int32" Nullable="false" />
-          <Property Name="prd_price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Inventory__prd_i__412EB0B6" FromRole="Inventory" ToRole="Product" />
+          <Property Name="prd_unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total_amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__Inventory__order__52593CB8" FromRole="Inventory" ToRole="PurchaseOrder" />
         </EntityType>
         <EntityType Name="Jeweller">
           <Key>
@@ -242,7 +248,6 @@
           <Property Name="prd_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="prd_unitPrice" Type="Int32" Nullable="false" />
           <Property Name="prd_unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Inventory" Relationship="Self.FK__Inventory__prd_i__412EB0B6" FromRole="Product" ToRole="Inventory" />
           <NavigationProperty Name="Quotation_Request" Relationship="Self.FK__Quotation__prd_i__440B1D61" FromRole="Product" ToRole="Quotation_Request" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
@@ -252,6 +257,7 @@
           <Property Name="order_id" Type="Int32" Nullable="false" />
           <Property Name="vendor_id" Type="Int32" />
           <Property Name="total_amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK__Inventory__order__52593CB8" FromRole="PurchaseOrder" ToRole="Inventory" />
           <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__order_i__4E88ABD4" FromRole="PurchaseOrder" ToRole="Payment" />
           <NavigationProperty Name="Quotation_Request" Relationship="Self.FK__PurchaseO__order__4AB81AF0" FromRole="PurchaseOrder" ToRole="Quotation_Request" />
           <NavigationProperty Name="Vendor" Relationship="Self.FK__PurchaseO__vendo__4BAC3F29" FromRole="PurchaseOrder" ToRole="Vendor" />
@@ -294,15 +300,15 @@
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__vendo__4BAC3F29" FromRole="Vendor" ToRole="PurchaseOrder" />
           <NavigationProperty Name="Quotation_Response" Relationship="Self.FK__Quotation__vendo__47DBAE45" FromRole="Vendor" ToRole="Quotation_Response" />
         </EntityType>
-        <Association Name="FK__Inventory__prd_i__412EB0B6">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK__Inventory__order__52593CB8">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="prd_id" />
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="order_id" />
             </Principal>
             <Dependent Role="Inventory">
-              <PropertyRef Name="prd_id" />
+              <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -378,7 +384,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JewelleryManagementSystemEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="JewelleryManagementSystemEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Inventories" EntityType="Self.Inventory" />
           <EntitySet Name="Jewellers" EntityType="Self.Jeweller" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
@@ -387,8 +393,8 @@
           <EntitySet Name="Quotation_Request" EntityType="Self.Quotation_Request" />
           <EntitySet Name="Quotation_Response" EntityType="Self.Quotation_Response" />
           <EntitySet Name="Vendors" EntityType="Self.Vendor" />
-          <AssociationSet Name="FK__Inventory__prd_i__412EB0B6" Association="Self.FK__Inventory__prd_i__412EB0B6">
-            <End Role="Product" EntitySet="Products" />
+          <AssociationSet Name="FK__Inventory__order__52593CB8" Association="Self.FK__Inventory__order__52593CB8">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
           <AssociationSet Name="FK__Payment__order_i__4E88ABD4" Association="Self.FK__Payment__order_i__4E88ABD4">
@@ -421,18 +427,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="JewelleryManagementSystemModelStoreContainer" CdmEntityContainer="JewelleryManagementSystemEntities1">
+        <EntityContainerMapping StorageEntityContainer="JewelleryManagementSystemModel1StoreContainer" CdmEntityContainer="JewelleryManagementSystemEntities">
           <EntitySetMapping Name="Inventories">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Inventory">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="prd_id" ColumnName="prd_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="prd_name" ColumnName="prd_name" />
+                <ScalarProperty Name="prd_description" ColumnName="prd_description" />
                 <ScalarProperty Name="prd_quantity" ColumnName="prd_quantity" />
-                <ScalarProperty Name="prd_price" ColumnName="prd_price" />
+                <ScalarProperty Name="prd_unit" ColumnName="prd_unit" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jewellers">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Jeweller">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Jeweller">
               <MappingFragment StoreEntitySet="Jeweller">
                 <ScalarProperty Name="jeweller_id" ColumnName="jeweller_id" />
                 <ScalarProperty Name="jeweller_name" ColumnName="jeweller_name" />
@@ -441,7 +450,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Payment">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Payment">
               <MappingFragment StoreEntitySet="Payment">
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="payment_type" ColumnName="payment_type" />
@@ -450,7 +459,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Product">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="prd_id" ColumnName="prd_id" />
                 <ScalarProperty Name="prd_name" ColumnName="prd_name" />
@@ -461,7 +470,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseOrders">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.PurchaseOrder">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
@@ -470,7 +479,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Quotation_Request">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Quotation_Request">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Quotation_Request">
               <MappingFragment StoreEntitySet="Quotation_Request">
                 <ScalarProperty Name="req_id" ColumnName="req_id" />
                 <ScalarProperty Name="prd_id" ColumnName="prd_id" />
@@ -480,7 +489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Quotation_Response">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Quotation_Response">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Quotation_Response">
               <MappingFragment StoreEntitySet="Quotation_Response">
                 <ScalarProperty Name="req_id" ColumnName="req_id" />
                 <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
@@ -489,7 +498,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vendors">
-            <EntityTypeMapping TypeName="JewelleryManagementSystemModel.Vendor">
+            <EntityTypeMapping TypeName="JewelleryManagementSystemModel1.Vendor">
               <MappingFragment StoreEntitySet="Vendor">
                 <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
                 <ScalarProperty Name="vendor_name" ColumnName="vendor_name" />

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace MZ_Jewellers.Controllers
 {
     public class AccountsController : Controller
     {
-        readonly JewelleryManagementSystemEntities1 db = new JewelleryManagementSystemEntities1();
+        readonly JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
 
         // GET: Accounts
 
@@ -18,7 +19,7 @@ namespace MZ_Jewellers.Controllers
         {
             if (Session["JewellerId"] != null || Session["VendorId"] != null)
             {
-                if(Session["JewellerId"] != null)
+                if (Session["JewellerId"] != null)
                 {
                     return RedirectToAction("Index", "Wholesaler");
                 }
@@ -26,9 +27,10 @@ namespace MZ_Jewellers.Controllers
                 {
                     return RedirectToAction("Index", "Vendor");
                 }
-                
+
             }
-            else { 
+            else
+            {
                 return View();
             }
         }
@@ -37,15 +39,21 @@ namespace MZ_Jewellers.Controllers
         public ActionResult JewellerLogin(string uname, string pwd)
         {
             var s = db.Jewellers.Where(x => x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
-            
+
             if (s != null)
             {
                 Session["JewellerId"] = s.jeweller_id;
                 Session["JewellerName"] = s.jeweller_name;
                 return RedirectToAction("Index", "Wholesaler");
             }
+            else
+            {
+                ViewBag.Message = String.Format("Wrong Login");
 
-            return RedirectToAction("");
+                return RedirectToAction("");
+            }
+
+
         }
 
         [HttpPost]

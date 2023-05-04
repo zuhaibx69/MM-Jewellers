@@ -11,7 +11,7 @@ namespace MZ_Jewellers.Controllers
 
     public class WholesalerController : Controller
     {
-        readonly JewelleryManagementSystemEntities1 db = new JewelleryManagementSystemEntities1();
+        readonly JewelleryManagementSystemEntities db = new JewelleryManagementSystemEntities();
 
         // GET: Wholesaler
 
@@ -28,7 +28,7 @@ namespace MZ_Jewellers.Controllers
                     return RedirectToAction("Index", "Vendor");
                 }
             }
-            return RedirectToAction("Login","Accounts");
+            return RedirectToAction("Login", "Accounts");
         }
 
         public ActionResult LogOut()
@@ -37,10 +37,24 @@ namespace MZ_Jewellers.Controllers
             return RedirectToAction("Login", "Accounts");
         }
 
+        [HttpGet]
         public ActionResult Orders()
+        {
+            ViewBag.Orderlist = db.PurchaseOrders.ToList();
+            ViewBag.Prodlist = db.Products.ToList();
+            ViewBag.Vendorlist = db.Vendors.ToList();
+            ViewBag.Payment = db.Payments.ToList();
+            ViewBag.Reqlist = db.Quotation_Request.ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Orders(int i)
         {
             return View();
         }
+
 
         [HttpGet]
         public ActionResult CreateRFQ()
@@ -130,6 +144,37 @@ namespace MZ_Jewellers.Controllers
 
             return RedirectToAction("ViewResponse");
         }
+
+        [HttpGet]
+        public ActionResult PendingOrder()
+        {
+
+            ViewBag.Orderlist = db.PurchaseOrders.ToList();
+            ViewBag.Prodlist = db.Products.ToList();
+            ViewBag.Vendorlist = db.Vendors.ToList();
+            ViewBag.Payment = db.Payments.ToList();
+            ViewBag.Reqlist = db.Quotation_Request.ToList();
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult PendingOrder(int order_id, string payment_type, int netprice)
+        {
+            Payment p = new Payment
+            {
+                order_id = order_id,
+                payment_type = payment_type,
+                netprice = netprice
+            };
+            db.Payments.Add(p);
+            db.SaveChanges();
+
+
+            return RedirectToAction("PendingOrder");
+        }
+
 
     }
 }

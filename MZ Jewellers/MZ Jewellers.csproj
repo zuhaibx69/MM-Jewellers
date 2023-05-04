@@ -136,43 +136,43 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Inventory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Jeweller.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PurchaseOrder.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Quotation_Request.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Quotation_Response.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vendor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1899,15 +1899,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2017,12 +2017,12 @@
     <Content Include="assests\lib\bootstrap\LICENSE" />
     <Content Include="assests\lib\jquery\dist\jquery.min.map" />
     <Content Include="assests\lib\bootstrap\dist\js\bootstrap.min.js.map" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2065,6 +2065,7 @@
     <Content Include="Views\Vendor\VerifyAccount.cshtml" />
     <Content Include="Views\Vendor\VerifiedAccount.cshtml" />
     <Content Include="Views\Vendor\QuotationRequests.cshtml" />
+    <Content Include="Views\Wholesaler\PendingOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
