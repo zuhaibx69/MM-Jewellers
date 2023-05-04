@@ -12,13 +12,10 @@ create table Jeweller
 );
 
 insert into Jeweller values ('A1', 'Huzaifa Admin', '1234');
-insert into Jeweller values ('A2', 'Admin', '1234');
 select * from Jeweller
-
 
 create table Vendor
 (
-
 	vendor_id int primary key identity(1,1),
 	vendor_name varchar(50) not null,
 	vendor_email varchar(50) not null unique,
@@ -45,18 +42,6 @@ create table Product
 insert into Product values ('Gold', 'Raw Material', 15000, 'Grams');
 select * from Product
 
-
-create table Inventory
-(
-	prd_id int foreign key references Product(prd_id) primary key,
-	prd_quantity int not null,
-	prd_price int not null
-
-);
-
-insert into Inventory values (1, 0, 0);
-select * from Inventory
-
 create table Quotation_Request
 (
 	req_id int primary key identity(1,1),
@@ -78,7 +63,6 @@ create table Quotation_Response
 );
 
 select * from Quotation_Response
-
 
 create table PurchaseOrder
 (
@@ -102,3 +86,15 @@ create table Payment
 
 select * from Payment
 
+create table Inventory
+(
+	order_id int foreign key references PurchaseOrder(order_id) primary key,
+	prd_name varchar(50) not null,
+	prd_description varchar(50),
+	prd_quantity int not null,	
+	prd_unit varchar(50) not null,
+	total_amount int not null
+
+);
+
+select * from Inventory

@@ -14,7 +14,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Request for Quotation</h6>
             </div>
             <div className="card-body">
-                @using (Html.BeginForm("CreateRFQ", "Wholesaler", FormMethod.Post))
+                @using (Html.BeginForm("CreateRFQ", "Wholesaler", FormMethod.Post, new { id = "rfq" }))
                 {
                     <div class="card-body bg-gray-200 m-3 border border-dark">
                         <div class="col-lg-12">
@@ -68,3 +68,14 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    let o = document.getElementById("rfq");
+
+    o.onsubmit = function () {
+        alert("Quotation Request Send");
+    };
+
+
+</script>
