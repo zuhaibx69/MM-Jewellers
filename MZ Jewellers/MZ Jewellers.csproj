@@ -2066,6 +2066,7 @@
     <Content Include="Views\Vendor\VerifiedAccount.cshtml" />
     <Content Include="Views\Vendor\QuotationRequests.cshtml" />
     <Content Include="Views\Wholesaler\PendingOrder.cshtml" />
+    <Content Include="Views\Wholesaler\Inventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

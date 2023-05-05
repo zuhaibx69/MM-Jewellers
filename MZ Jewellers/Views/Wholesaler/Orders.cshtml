@@ -20,7 +20,7 @@
                             <th scope="col">Order Deadline</th>
                             <th scope="col">Total</th>
                             <th scope="col">Status</th>
-                            <th scope="col"></th>
+                            <th scope="col">Invoice</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,10 +52,10 @@
                                                     <td>@Vendor.vendor_name</td>
                                                     <td>@Req.order_deadline.Date.ToString("d")</td>
                                                     <td>@Order.total_amount</td>
-                                                    <td>@payment.payment_type</td>
+                                                    <td>Delivered</td>
                                                   
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>
+                                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>*@
                                                     </td>
 
 
@@ -76,10 +76,10 @@
                                                     <td>@Vendor.vendor_name</td>
                                                     <td>@Req.order_deadline.Date.ToString("d")</td>
                                                     <td>@Order.total_amount</td>
-                                                    <td>@ViewBag.Payment[i].payment_type</td>
+                                                    <td>Pending</td>
                                                   
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>
+                                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>*@
                                                     </td>
 
                                     </tr>

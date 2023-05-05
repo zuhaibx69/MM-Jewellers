@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/all.min.css"/>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="table-responsive bg-white">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            for (int i = 0; i < ViewBag.Inventory.Count; i++)
+                            {
+
+                                                <tr>
+                                                    <td>@ViewBag.Inventory[i].order_id</td>
+                                                    <td>@ViewBag.Inventory[i].prd_name</td>
+                                                    <td>@ViewBag.Inventory[i].prd_description</td>
+                                                    <td>@ViewBag.Inventory[i].prd_quantity</td>
+                                                    <td>@ViewBag.Inventory[i].prd_unit</td>
+                                                    <td>@ViewBag.Inventory[i].total_amount</td>
+                                                </tr>
+
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -160,7 +160,7 @@ namespace MZ_Jewellers.Controllers
         }
 
         [HttpPost]
-        public ActionResult PendingOrder(int order_id, string payment_type, int netprice)
+        public ActionResult PendingOrder(int order_id, string payment_type, int netprice, int qty)
         {
             Payment p = new Payment
             {
@@ -171,8 +171,27 @@ namespace MZ_Jewellers.Controllers
             db.Payments.Add(p);
             db.SaveChanges();
 
+            Inventory i = new Inventory
+            {
+                order_id = order_id,
+                prd_name = "Gold",
+                prd_description = "Raw Material",
+                prd_quantity = qty,
+                prd_unit = "Grams",
+                total_amount = netprice + (netprice / 4)
+            };
+
+            db.Inventories.Add(i);
+            db.SaveChanges();
 
             return RedirectToAction("PendingOrder");
+        }
+
+        [HttpGet]
+        public ActionResult Inventory()
+        {
+            ViewBag.Inventory = db.Inventories.ToList();
+            return View();
         }
 
 
