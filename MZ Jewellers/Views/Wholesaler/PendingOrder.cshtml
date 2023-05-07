@@ -73,7 +73,7 @@
                                         <td>@Order.total_amount</td>
 
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount', '@Req.prd_quantity')">Received Goods</button>
                                         </td>
 
 
@@ -132,14 +132,15 @@
         var P_order_id= 0;
         var P_payment_type = "";
         var P_netprice = 0;
+        var P_qty = 0;
 
-    function myf(order_id, amount) {
+    function myf(order_id, amount, qty) {
 
+            P_qty = qty;
             P_order_id = order_id;
             P_payment_type = "Full Payment";
             P_netprice = Math.ceil(((amount) / 100) * 80);
         document.getElementById('amount').value = P_netprice;
-        alert(order_id);
 
         }
 
@@ -149,7 +150,7 @@ function Payment(){
 
             type: 'POST',
             url: '@Url.Action("PendingOrder", "Wholesaler")',
-            data: { order_id: P_order_id, payment_type: P_payment_type, netprice:P_netprice },
+            data: { order_id: P_order_id, payment_type: P_payment_type, netprice: P_netprice, qty: P_qty },
             success: function(result) {
                     location.reload();
                 },
