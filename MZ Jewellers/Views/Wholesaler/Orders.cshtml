@@ -44,23 +44,23 @@
                                 if (@ViewBag.Payment[i].order_id == a && @ViewBag.Payment[i].payment_type == "Full Payment")
                                 {
                                     j++;
-                                                <tr id="trr">
-                                                    <td>@Order.order_id</td>
-                                                    <th scope="row" style="color: #666666;">MZ Jewellers</th>
-                                                    <td>Gold</td>
-                                                    <td>@Req.prd_quantity</td>
-                                                    <td>@Session["JewellerName"]</td>
-                                                    <td>@Vendor.vendor_name</td>
-                                                    <td>@Req.order_deadline.Date.ToString("d")</td>
-                                                    <td>@Order.total_amount</td>
-                                                    <td>Delivered</td>
-                                                  
-                                                    <td>
-                                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>*@
-                                                    </td>
+                                    <tr id="trr">
+                                        <td>@Order.order_id</td>
+                                        <th scope="row" style="color: #666666;">MZ Jewellers</th>
+                                        <td>Gold</td>
+                                        <td>@Req.prd_quantity</td>
+                                        <td>@Session["JewellerName"]</td>
+                                        <td>@Vendor.vendor_name</td>
+                                        <td>@Req.order_deadline.Date.ToString("d")</td>
+                                        <td>@Order.total_amount</td>
+                                        <td>Delivered</td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="myf('@ViewBag.Payment[i].order_id','@Req.prd_quantity','@Vendor.vendor_name','@Req.order_deadline.Date.ToString("d")','Full Payment','@Order.total_amount')">Invoice</button> @*,'@Session["JewellerName"]',,@Req.order_deadline.Date.ToString("d"),'Full Payment','@Order.total_amount'*@
+                                        </td>
 
 
-                                                </tr>
+                                    </tr>
                                 }
 
                                 else if (@ViewBag.Payment[i].order_id != a && @ViewBag.Payment[i].payment_type == "Advance")
@@ -70,18 +70,18 @@
                                     <tr id="trr">
 
                                         <td>@Order.order_id</td>
-                                                    <th scope="row" style="color: #666666;">MZ Jewellers</th>
-                                                    <td>Gold</td>
-                                                    <td>@Req.prd_quantity</td>
-                                                    <td>@Session["JewellerName"]</td>
-                                                    <td>@Vendor.vendor_name</td>
-                                                    <td>@Req.order_deadline.Date.ToString("d")</td>
-                                                    <td>@Order.total_amount</td>
-                                                    <td>Pending</td>
-                                                  
-                                                    <td>
-                                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount',)">Received Goods</button>*@
-                                                    </td>
+                                        <th scope="row" style="color: #666666;">MZ Jewellers</th>
+                                        <td>Gold</td>
+                                        <td>@Req.prd_quantity</td>
+                                        <td>@Session["JewellerName"]</td>
+                                        <td>@Vendor.vendor_name</td>
+                                        <td>@Req.order_deadline.Date.ToString("d")</td>
+                                        <td>@Order.total_amount</td>
+                                        <td>Pending</td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="myf('@ViewBag.Payment[i].order_id','@Req.prd_quantity','@Vendor.vendor_name','@Req.order_deadline.Date.ToString("d")','Advance','@Order.total_amount')">Invoice</button> @*,'@Session["JewellerName"]',,@Req.order_deadline.Date.ToString("d"),'Full Payment','@Order.total_amount'*@
+                                        </td>
 
                                     </tr>
 
@@ -91,40 +91,85 @@
 
                             }
 
-                            <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header border-bottom-0">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                            <!-- Invoice Modal -->
+                    <div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="invoiceModalLabel">Invoice</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h6>Order no:</h6>
+                                            <p id="p_order_no"></p>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="form-title text-center">
-                                                <h4>Make Purshase Order</h4>
-                                            </div>
-                                            <div class="d-flex flex-column text-center pt-3">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <h5>Have you received the good? If Yes then pay the 80% Remaining payment</h5>
-                                                    </div>
-                                                    <div class="form-group" id="advance-option">
-                                                        <label for="amount">Remaining Payment</label>
-                                                        <input type="number" class="form-control" id="amount" name="amount" value="200" disabled>
-                                                    </div>
-
-
-                                                    <button type="button" class="btn btn-info btn-block btn-round" onclick="Payment()">Pay</button>
-                                                </form>
-
-
-                                            </div>
+                                        <div class="col-md-6">
+                                            <h6>Order Deadline:</h6>
+                                            <p id="p_order_deadline"></p>
                                         </div>
-
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h6>Buyer:</h6>
+                                            <p id="p_buyer"></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Vendor:</h6>
+                                            <p id="p_vendor"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h6>Product:</h6>
+                                            <p id="p_product">Gold</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Description:</h6>
+                                            <p id="p_desc">Raw Material</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h6>Quantity:</h6>
+                                            <p id="p_qty"></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Total Amount:</h6>
+                                            <p id="p_amount"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h6>Payment Type:</h6>
+                                            <p id="p_payment_type"></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Status:</h6>
+                                            <p id="p_status">Payed</p>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <h6>Paid Amount:</h6>
+                                            <p id="p_paid_amount"></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Remaining Balance:</h6>
+                                            <p id="p_remaining_balance"></p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    
+                                </div>
                             </div>
-
+                        </div>
+                    </div>
 
                         }
 
@@ -138,38 +183,31 @@
 
 
 <script>
+    //, buyer,vendor,order_deadline,payment_type,amount
+    function myf(order_id, qty, vendor, order_deadline, payment_type, amount) {
 
-        var P_order_id= 0;
-        var P_payment_type = "";
-        var P_netprice = 0;
 
-    function myf(order_id, amount) {
+        document.getElementById('p_order_no').innerHTML = order_id;
+        document.getElementById('p_qty').innerHTML = qty;
+        document.getElementById('p_buyer').innerHTML = '@Session["JewellerName"]';
+        document.getElementById('p_vendor').innerHTML = vendor;
+        document.getElementById('p_order_deadline').innerHTML = order_deadline;
+        document.getElementById('p_payment_type').innerHTML = payment_type;
+        document.getElementById('p_amount').innerHTML = amount + " Rs";
 
-            P_order_id = order_id;
-            P_payment_type = "Full Payment";
-            P_netprice = Math.ceil(((amount) / 100) * 80);
-        document.getElementById('amount').value = P_netprice;
+        if (payment_type == "Full Payment") {
+
+            document.getElementById('p_paid_amount').innerHTML = (amount * 80) / 100;
+            document.getElementById('p_remaining_balance').innerHTML = 0;
+        }
+        else {
+            document.getElementById('p_paid_amount').innerHTML = (amount * 20) / 100;
+            document.getElementById('p_remaining_balance').innerHTML = (amount * 80) / 100;
+        }
         
 
+
         }
-
-function Payment(){
-
-        $.ajax({
-
-            type: 'POST',
-            url: '@Url.Action("PendingOrder", "Wholesaler")',
-            data: { order_id: P_order_id, payment_type: P_payment_type, netprice:P_netprice },
-            success: function(result) {
-                    location.reload();
-                },
-            error: function(jqXHR, textStatus, errorThrown) {
-                    // Handle errors, if needed
-                }
-            });
-
-}
-
 
 </script>
 

@@ -51,7 +51,7 @@ namespace MZ_Jewellers.Controllers
             }
             else
             {
-                return Json(new { success = false, errorMessage = "Invalid username or password" });
+                return Json(new { success = false });
             }
 
 
@@ -74,7 +74,7 @@ namespace MZ_Jewellers.Controllers
             }
             else
             {
-                return Json(new { success = false, errorMessage = "Invalid Email or password" });
+                return Json(new { success = false});
             }
 
         }
