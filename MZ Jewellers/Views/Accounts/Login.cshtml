@@ -129,57 +129,76 @@
 
 function JewellerLogin(){
 
-    var uname = document.getElementById("Jeweller_uname").value;
-    var pwd = document.getElementById("Jeweller_pwd").value;
-    var temp = false;
-    $.ajax({
-        type: 'POST',
-        url: '@Url.Action("JewellerLogin", "Accounts")',
-        data: { uname: uname, pwd: pwd},
-        success: function (result) {
-            // If login is successful, redirect to index page
-            if(result.success) {
-                window.location.href = "@Url.Action("Index", "Wholesaler")";
-            } else {
-                // If login fails, show an alert box with the error message
-                alert(result.errorMessage);
+    if (!$('#Jeweller_uname')[0].checkValidity()) {
+        $('#Jeweller_uname')[0].reportValidity()
+    }
+
+    else if (!$('#Jeweller_pwd')[0].checkValidity()) {
+        $('#Jeweller_pwd')[0].reportValidity()
+    }
+
+    else {
+
+        var uname = document.getElementById("Jeweller_uname").value;
+        var pwd = document.getElementById("Jeweller_pwd").value;
+        var temp = false;
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("JewellerLogin", "Accounts")',
+            data: { uname: uname, pwd: pwd },
+            success: function (result) {
+                // If login is successful, redirect to index page
+                if (result.success) {
+                    window.location.href = "@Url.Action("Index", "Wholesaler")";
+                } else {
+                    // If login fails, show an alert box with the error message
+                    alert(result.errorMessage);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // If there is an error in the AJAX call, show an alert box with the error message
+                alert("Error: " + textStatus);
             }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            // If there is an error in the AJAX call, show an alert box with the error message
-            alert("Error: " + textStatus);
-        }
-    });
+        });
 
-
-        }
+    }
+}
 
 function VendorLogin(){
 
-    var email = document.getElementById("Vendor_email").value;
-    var pwd = document.getElementById("Vendor_pwd").value;
-    var temp = false;
-    $.ajax({
-        type: 'POST',
-        url: '@Url.Action("VendorLogin", "Accounts")',
-        data: { email: email, pwd: pwd},
-        success: function (result) {
-            // If login is successful, redirect to index page
-            if(result.success) {
-                window.location.href = "@Url.Action("Index", "Vendor")";
-            } else {
-                // If login fails, show an alert box with the error message
-                alert(result.errorMessage);
+    if (!$('#Vendor_email')[0].checkValidity()) {
+        $('#Vendor_email')[0].reportValidity()
+    }
+
+    else if (!$('#Vendor_pwd')[0].checkValidity()) {
+        $('#Vendor_pwd')[0].reportValidity()
+    }
+
+    else {
+
+        var email = document.getElementById("Vendor_email").value;
+        var pwd = document.getElementById("Vendor_pwd").value;
+        var temp = false;
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("VendorLogin", "Accounts")',
+            data: { email: email, pwd: pwd },
+            success: function (result) {
+                // If login is successful, redirect to index page
+                if (result.success) {
+                    window.location.href = "@Url.Action("Index", "Vendor")";
+                } else {
+                    // If login fails, show an alert box with the error message
+                    alert(result.errorMessage);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // If there is an error in the AJAX call, show an alert box with the error message
+                alert("Error: " + textStatus);
             }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            // If there is an error in the AJAX call, show an alert box with the error message
-            alert("Error: " + textStatus);
-        }
-    });
-
-
-        }
+        });
+    }
+}
 
 
     </script>
