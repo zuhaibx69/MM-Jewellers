@@ -84,7 +84,7 @@ create table Payment
 
 );
 
-select * from Payment
+select * from Payment where payment_type != 'Advance'
 
 create table Inventory
 (

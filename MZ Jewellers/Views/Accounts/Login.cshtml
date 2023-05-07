@@ -5,6 +5,13 @@
 
 }
 
+@if (TempData["LoginError"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["LoginError"]
+    </div>
+}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +20,13 @@
     <title>Jewellery Management System</title>
     <link href="~/assests/css/Login.css" rel="stylesheet">
 
+    <link href="~/assests/lib/fontawesome-free/css/all.min.css"
+          rel="stylesheet"
+          type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet" />
+    
+
 </head>
 <body>
     <section>
@@ -20,36 +34,34 @@
             <div id="form_section" class="form-container">
                 <div class="login-form form-wraper ">
                     <div>
-                        @using (Html.BeginForm("JewellerLogin", "Accounts", FormMethod.Post))
-                        {
-                            <div class="form-title">
-                                <h2>Jeweller Login</h2>
-                            </div>
 
-                            <div class="input-group">
-                                <div class="box">
-                                    <span>
-                                        <input name="uname" placeholder="Enter User Name" class="myInput" type="text" required />
-                                    </span>
-                                </div>
+                        <div class="form-title">
+                            <h2>Jeweller Login</h2>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="box">
+                                <span>
+                                    <input id="Jeweller_uname" placeholder="Enter User Name" class="myInput" type="text" required />
+                                </span>
                             </div>
-                            <div class="input-group">
-                                <div class="box">
-                                    <span>
-                                        <input name="pwd" placeholder="Enter Password" class="myInput" type="password" required />
-                                    </span>
-                                </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="box">
+                                <span>
+                                    <input id="Jeweller_pwd" placeholder="Enter Password" class="myInput" type="password" required />
+                                </span>
                             </div>
-                            <div class="action-button">
-                                <input type="submit" value="Login">
-                            </div>
-                        }
+                        </div>
+                        <div class="action-button">
+                            <button type="button" onclick="JewellerLogin()">Login</button>
+                        </div>
+
                     </div>
                 </div>
                 <div class="signUp-form form-wraper">
                     <div>
-                        @using (Html.BeginForm("VendorLogin", "Accounts", FormMethod.Post))
-                        {
+
                             <div class="form-title">
                                 <h2>Vendor Login</h2>
                             </div>
@@ -57,21 +69,21 @@
                             <div class="input-group">
                                 <div class="box">
                                     <span>
-                                        <input name="email" placeholder="Enter your Email" class="myInput" type="email" required />
+                                        <input id="Vendor_email" placeholder="Enter your Email" class="myInput" type="email" required />
                                     </span>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <div class="box">
                                     <span>
-                                        <input name="pwd" placeholder="Enter Password" class="myInput" type="password" required />
+                                        <input id="Vendor_pwd" placeholder="Enter Password" class="myInput" type="password" required />
                                     </span>
                                 </div>
                             </div>
                             <div class="action-button">
-                                <input type="submit" value="Login">
+                                <button type="button" onclick="VendorLogin()">Login</button>
                             </div>
-                        }
+                        
                     </div>
                 </div>
             </div>
@@ -89,16 +101,7 @@
         }
     </section>
 
-    @if (ViewBag.Message != null)
-    {
-        <script type="text/javascript">
 
-            window.onload = function () {
-                alert("@ViewBag.Message");
-            };
-        </script>
-
-    }
 
     <script>
         const inputs = document.querySelectorAll("input");
@@ -122,7 +125,68 @@
             });
         });
 
+
+
+function JewellerLogin(){
+
+    var uname = document.getElementById("Jeweller_uname").value;
+    var pwd = document.getElementById("Jeweller_pwd").value;
+    var temp = false;
+    $.ajax({
+        type: 'POST',
+        url: '@Url.Action("JewellerLogin", "Accounts")',
+        data: { uname: uname, pwd: pwd},
+        success: function (result) {
+            // If login is successful, redirect to index page
+            if(result.success) {
+                window.location.href = "@Url.Action("Index", "Wholesaler")";
+            } else {
+                // If login fails, show an alert box with the error message
+                alert(result.errorMessage);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            // If there is an error in the AJAX call, show an alert box with the error message
+            alert("Error: " + textStatus);
+        }
+    });
+
+
+        }
+
+function VendorLogin(){
+
+    var email = document.getElementById("Vendor_email").value;
+    var pwd = document.getElementById("Vendor_pwd").value;
+    var temp = false;
+    $.ajax({
+        type: 'POST',
+        url: '@Url.Action("VendorLogin", "Accounts")',
+        data: { email: email, pwd: pwd},
+        success: function (result) {
+            // If login is successful, redirect to index page
+            if(result.success) {
+                window.location.href = "@Url.Action("Index", "Vendor")";
+            } else {
+                // If login fails, show an alert box with the error message
+                alert(result.errorMessage);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            // If there is an error in the AJAX call, show an alert box with the error message
+            alert("Error: " + textStatus);
+        }
+    });
+
+
+        }
+
+
     </script>
+
+    <script type="text/javascript" src="/assests/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/assests/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assests/lib/jquery-easing/jquery.easing.min.js"></script>
 
 </body>
 </html>

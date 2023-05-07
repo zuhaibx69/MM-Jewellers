@@ -17,6 +17,7 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            ViewBag.JewellerLogin = "True";
             if (Session["JewellerId"] != null || Session["VendorId"] != null)
             {
                 if (Session["JewellerId"] != null)
@@ -36,30 +37,32 @@ namespace MZ_Jewellers.Controllers
         }
 
         [HttpPost]
-        public ActionResult JewellerLogin(string uname, string pwd)
+        public JsonResult JewellerLogin(string uname, string pwd)
         {
             var s = db.Jewellers.Where(x => x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
+            bool success = true;
+            string errorMessage = "";
 
             if (s != null)
             {
                 Session["JewellerId"] = s.jeweller_id;
                 Session["JewellerName"] = s.jeweller_name;
-                return RedirectToAction("Index", "Wholesaler");
+                return Json(new { success = true });
             }
             else
             {
-                ViewBag.Message = String.Format("Wrong Login");
-
-                return RedirectToAction("");
+                return Json(new { success = false, errorMessage = "Invalid username or password" });
             }
 
 
         }
 
         [HttpPost]
-        public ActionResult VendorLogin(string email, string pwd)
+        public JsonResult VendorLogin(string email, string pwd)
         {
             var s = db.Vendors.Where(x => x.vendor_email == email && x.vendor_password == pwd).FirstOrDefault();
+            bool success = true;
+            string errorMessage = "";
 
             if (s != null)
             {
@@ -67,10 +70,13 @@ namespace MZ_Jewellers.Controllers
                 Session["VendorId"] = s.vendor_id;
                 Session["VendorName"] = s.vendor_name;
                 Session["VendorStatus"] = s.vendor_status;
-                return RedirectToAction("Index", "Vendor");
+                return Json(new { success = true });
+            }
+            else
+            {
+                return Json(new { success = false, errorMessage = "Invalid Email or password" });
             }
 
-            return RedirectToAction("");
         }
 
     }
