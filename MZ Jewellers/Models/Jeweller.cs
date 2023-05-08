@@ -14,8 +14,17 @@ namespace MZ_Jewellers.Models
     
     public partial class Jeweller
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Jeweller()
+        {
+            this.Quotation_Request = new HashSet<Quotation_Request>();
+        }
+    
         public string jeweller_id { get; set; }
         public string jeweller_name { get; set; }
         public string jeweller_password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Quotation_Request> Quotation_Request { get; set; }
     }
 }

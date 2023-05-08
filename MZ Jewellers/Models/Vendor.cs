@@ -26,6 +26,12 @@ namespace MZ_Jewellers.Models
         public string vendor_email { get; set; }
         public string vendor_password { get; set; }
         public string vendor_contact { get; set; }
+        public string vendor_cnic { get; set; }
+        public string vendor_address { get; set; }
+        public int vendor_tax { get; set; }
+        public string vendor_bank_name { get; set; }
+        public string vendor_acc_title { get; set; }
+        public string vendor_acc_no { get; set; }
         public string vendor_licenseNo { get; set; }
         public byte[] vendor_licenseImg { get; set; }
         public string vendor_status { get; set; }

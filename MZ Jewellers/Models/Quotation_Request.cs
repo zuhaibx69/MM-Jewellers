@@ -22,9 +22,11 @@ namespace MZ_Jewellers.Models
     
         public int req_id { get; set; }
         public Nullable<int> prd_id { get; set; }
+        public string jeweller_id { get; set; }
         public int prd_quantity { get; set; }
         public System.DateTime order_deadline { get; set; }
     
+        public virtual Jeweller Jeweller { get; set; }
         public virtual Product Product { get; set; }
         public virtual PurchaseOrder PurchaseOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

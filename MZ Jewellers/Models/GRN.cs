@@ -12,20 +12,16 @@ namespace MZ_Jewellers.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class GRN
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
-        {
-            this.Quotation_Request = new HashSet<Quotation_Request>();
-        }
-    
-        public int prd_id { get; set; }
+        public int order_id { get; set; }
+        public string vendor_name { get; set; }
         public string prd_name { get; set; }
-        public string prd_description { get; set; }
+        public int prd_quantity { get; set; }
         public string prd_unit { get; set; }
+        public int total_amount { get; set; }
+        public System.DateTime receiving_date { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Quotation_Request> Quotation_Request { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
     }
 }

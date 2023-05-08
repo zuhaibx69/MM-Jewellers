@@ -5,21 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8556e7655aa14efd829436b42a3f3acd" Name="Diagram1">
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Inventory" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Jeweller" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Payment" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Product" Width="1.5" PointX="1.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.PurchaseOrder" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Quotation_Request" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Quotation_Response" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Vendor" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Inventory__order__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Payment__order_i__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__prd_i__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__PurchaseO__order__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__PurchaseO__vendo__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__req_i__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__vendo__47DBAE45" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.GRN" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Inventory" Width="1.5" PointX="5.25" PointY="9.875" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Jeweller" Width="1.5" PointX="1.5" PointY="11.625" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Payment" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Product" Width="1.5" PointX="1.5" PointY="15.25" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.PurchaseOrder" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Quotation_Request" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Quotation_Response" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="JewelleryManagementSystemModel1.Vendor" Width="1.5" PointX="0.75" PointY="6.125" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__GRN__order_id__75A278F5" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Inventory__order__72C60C4A" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__jewel__656C112C" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Payment__order_i__6FE99F9F" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__prd_i__6477ECF3" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__PurchaseO__order__6C190EBB" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__PurchaseO__vendo__6D0D32F4" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__req_i__68487DD7" />
+        <AssociationConnector Association="JewelleryManagementSystemModel1.FK__Quotation__vendo__693CA210" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

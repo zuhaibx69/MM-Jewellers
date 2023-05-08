@@ -25,6 +25,7 @@ namespace MZ_Jewellers.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<GRN> GRNs { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<Jeweller> Jewellers { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
