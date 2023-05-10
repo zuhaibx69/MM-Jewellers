@@ -13,13 +13,11 @@
                     <thead>
                         <tr>
                             <th scope="col">Order no</th>
+                            <th scope="col">Vendor</th>
                             <th scope="col">Company</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Quantity</th>
                             <th scope="col">Buyer</th>
-                            <th scope="col">Vendor Name</th>
                             <th scope="col">Order Deadline</th>
-                            <th scope="col">Total</th>
+                            <th scope="col">Total Amount</th>
                             <th scope="col">Status</th>
                             <th scope="col">Invoice</th>
                         </tr>
@@ -34,6 +32,8 @@
                                 var Vendor = ((List<MZ_Jewellers.Models.Vendor>)ViewBag.Vendorlist).Find(item => item.vendor_id == Order.vendor_id);
                                 var Req = ((List<MZ_Jewellers.Models.Quotation_Request>)ViewBag.Reqlist).Find(item => item.req_id == ViewBag.Payment[i].order_id);
                                 var payment = ((List<MZ_Jewellers.Models.Payment>)ViewBag.Payment).Find(item => item.payment_type == "Full Payment" && item.order_id == ViewBag.Payment[i].order_id);
+                                var Jeweller = ((List<MZ_Jewellers.Models.Jeweller>)ViewBag.Jewellerlist).Find(item => item.jeweller_id == Req.jeweller_id);
+                                var Product = ((List<MZ_Jewellers.Models.Product>)ViewBag.Prodlist).Find(item => item.prd_id == Req.prd_id);
 
                                 int? a = 0;
 
@@ -46,17 +46,15 @@
                                     j++;
                                     <tr id="trr">
                                         <td>@Order.order_id</td>
-                                        <th scope="row" style="color: #666666;">MZ Jewellers</th>
-                                        <td>Gold</td>
-                                        <td>@Req.prd_quantity</td>
-                                        <td>@Session["JewellerName"]</td>
                                         <td>@Vendor.vendor_name</td>
+                                        <th scope="row" style="color: #666666;">MZ Jewellers</th>
+                                        <td>@Jeweller.jeweller_name</td>
                                         <td>@Req.order_deadline.Date.ToString("d")</td>
                                         <td>@Order.total_amount</td>
                                         <td>Delivered</td>
 
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="myf('@ViewBag.Payment[i].order_id','@Req.prd_quantity','@Vendor.vendor_name','@Req.order_deadline.Date.ToString("d")','Full Payment','@Order.total_amount')">Invoice</button> @*,'@Session["JewellerName"]',,@Req.order_deadline.Date.ToString("d"),'Full Payment','@Order.total_amount'*@
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="myf('@ViewBag.Payment[i].order_id','@Req.prd_quantity', '@Product.prd_unit', '@Jeweller.jeweller_name', '@Vendor.vendor_name','@Req.order_deadline.Date.ToString("d")','Full Payment','@Order.total_amount')">Invoice</button> @*,'@Session["JewellerName"]',,@Req.order_deadline.Date.ToString("d"),'Full Payment','@Order.total_amount'*@
                                         </td>
 
 
@@ -70,17 +68,15 @@
                                     <tr id="trr">
 
                                         <td>@Order.order_id</td>
-                                        <th scope="row" style="color: #666666;">MZ Jewellers</th>
-                                        <td>Gold</td>
-                                        <td>@Req.prd_quantity</td>
-                                        <td>@Session["JewellerName"]</td>
                                         <td>@Vendor.vendor_name</td>
+                                        <th scope="row" style="color: #666666;">MZ Jewellers</th>
+                                        <td>@Jeweller.jeweller_name</td>
                                         <td>@Req.order_deadline.Date.ToString("d")</td>
                                         <td>@Order.total_amount</td>
                                         <td>Pending</td>
 
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="myf('@ViewBag.Payment[i].order_id','@Req.prd_quantity','@Vendor.vendor_name','@Req.order_deadline.Date.ToString("d")','Advance','@Order.total_amount')">Invoice</button> @*,'@Session["JewellerName"]',,@Req.order_deadline.Date.ToString("d"),'Full Payment','@Order.total_amount'*@
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="myf('@ViewBag.Payment[i].order_id','@Req.prd_quantity','@Product.prd_unit', '@Jeweller.jeweller_name', '@Vendor.vendor_name','@Req.order_deadline.Date.ToString("d")','Advance','@Order.total_amount')">Invoice</button> @*,'@Session["JewellerName"]',,@Req.order_deadline.Date.ToString("d"),'Full Payment','@Order.total_amount'*@
                                         </td>
 
                                     </tr>
@@ -184,12 +180,12 @@
 
 <script>
     //, buyer,vendor,order_deadline,payment_type,amount
-    function myf(order_id, qty, vendor, order_deadline, payment_type, amount) {
+    function myf(order_id, qty, unit, jeweller, vendor, order_deadline, payment_type, amount) {
 
 
         document.getElementById('p_order_no').innerHTML = order_id;
-        document.getElementById('p_qty').innerHTML = qty;
-        document.getElementById('p_buyer').innerHTML = '@Session["JewellerName"]';
+        document.getElementById('p_qty').innerHTML = qty + " " + unit;
+        document.getElementById('p_buyer').innerHTML = jeweller;
         document.getElementById('p_vendor').innerHTML = vendor;
         document.getElementById('p_order_deadline').innerHTML = order_deadline;
         document.getElementById('p_payment_type').innerHTML = payment_type;

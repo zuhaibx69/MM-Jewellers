@@ -45,6 +45,7 @@ namespace MZ_Jewellers.Controllers
             ViewBag.Vendorlist = db.Vendors.ToList();
             ViewBag.Payment = db.Payments.ToList();
             ViewBag.Reqlist = db.Quotation_Request.ToList();
+            ViewBag.Jewellerlist = db.Jewellers.ToList();
 
             return View();
         }
@@ -59,15 +60,21 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult CreateRFQ()
         {
-            return View();
+            if (Session["JewellerId"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
+
         }
 
         [HttpPost]
-        public ActionResult CreateRFQ(int qty, DateTime Deadlinedate)
+        public ActionResult CreateRFQ(int qty, int unit, DateTime Deadlinedate)
         {
             Quotation_Request qr = new Quotation_Request
             {
-                prd_id = 1,
+                prd_id = unit,
+                jeweller_id = Session["JewellerId"].ToString(),
                 prd_quantity = qty,
                 order_deadline = Deadlinedate.Date
             };
@@ -160,7 +167,7 @@ namespace MZ_Jewellers.Controllers
         }
 
         [HttpPost]
-        public ActionResult PendingOrder(int order_id, string payment_type, int netprice, int qty)
+        public ActionResult PendingOrder(string vendor_name, int order_id, string payment_type, int netprice, int qty, string unit)
         {
             Payment p = new Payment
             {
@@ -177,11 +184,25 @@ namespace MZ_Jewellers.Controllers
                 prd_name = "Gold",
                 prd_description = "Raw Material",
                 prd_quantity = qty,
-                prd_unit = "Grams",
+                prd_unit = unit,
                 total_amount = netprice + (netprice / 4)
             };
 
             db.Inventories.Add(i);
+            db.SaveChanges();
+
+            GRN g = new GRN
+            {
+                order_id = order_id,
+                vendor_name = vendor_name,
+                prd_name = "Gold",
+                prd_quantity = qty,
+                prd_unit = unit,
+                total_amount = netprice + (netprice / 4),
+                receiving_date = DateTime.Now.Date
+            };
+
+            db.GRNs.Add(g);
             db.SaveChanges();
 
             return RedirectToAction("PendingOrder");
@@ -194,6 +215,12 @@ namespace MZ_Jewellers.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult GRN()
+        {
+            ViewBag.GRN = db.GRNs.ToList();
+            return View();
+        }
 
     }
 }

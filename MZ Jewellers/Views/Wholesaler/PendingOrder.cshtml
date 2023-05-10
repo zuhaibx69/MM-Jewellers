@@ -15,7 +15,7 @@
                 <table class="table mb-0" id="tblstudentDetails">
                     <thead>
                         <tr>
-                            <th scope="col">S.No</th>
+                            <th scope="col">Order no</th>
                             <th scope="col">Product</th>
                             <th scope="col">Description</th>
                             <th scope="col">Quantity</th>
@@ -49,31 +49,19 @@
                                 {
                                     j++;
                                     <tr id="trr">
-                                        <td>@(j)</td>
+                                        <td>@Req.req_id</td>
                                         <th scope="row" style="color: #666666;">Gold</th>
                                         <td>Raw Material</td>
                                         <td>@Req.prd_quantity</td>
-                                        <td>Grams</td>
+                                        <td>@ViewBag.Prodlist[@Req.prd_id - 1].prd_unit</td>
                                         <td>@Req.order_deadline.Date.ToString("d")</td>
-                                        @*<td style="width:20%">
-                                                <div class="form-group" style=" display: flex; align-items: flex-end;">
-                                                    <input type="number" class="form-control" placeholder="1" name="price_perunit" id="price_perunit_@i" min="1" required />
-                                                    <input type="hidden" id="hiddenreqid_@i" value="@ViewBag.QRlist[i].req_id" />
-                                                    <label for="inputdefault" style="margin-left: 6px">PKR</label>
-                                                </div>
-                                            </td>*@
-
                                         <td>@Vendor.vendor_name</td>
-
                                         <td>@ViewBag.Payment[i].payment_type</td>
-
-
                                         <td>@((Order.total_amount / 100) * 80)</td>
-
                                         <td>@Order.total_amount</td>
 
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@ViewBag.Payment[i].order_id','@Order.total_amount', '@Req.prd_quantity')">Received Goods</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@Vendor.vendor_name', '@ViewBag.Payment[i].order_id','@Order.total_amount', '@Req.prd_quantity', '@ViewBag.Prodlist[@Req.prd_id - 1].prd_unit')">Received Goods</button>
                                         </td>
 
 
@@ -129,13 +117,17 @@
 
 <script>
 
+        var P_vendor_name = "";
         var P_order_id= 0;
         var P_payment_type = "";
         var P_netprice = 0;
         var P_qty = 0;
+        var P_unit = "";
 
-    function myf(order_id, amount, qty) {
+    function myf(vendor, order_id, amount, qty, unit) {
 
+            P_vendor_name = vendor;
+            P_unit = unit;
             P_qty = qty;
             P_order_id = order_id;
             P_payment_type = "Full Payment";
@@ -150,9 +142,10 @@ function Payment(){
 
             type: 'POST',
             url: '@Url.Action("PendingOrder", "Wholesaler")',
-            data: { order_id: P_order_id, payment_type: P_payment_type, netprice: P_netprice, qty: P_qty },
-            success: function(result) {
+            data: { vendor_name: P_vendor_name, order_id: P_order_id, payment_type: P_payment_type, netprice: P_netprice, qty: P_qty, unit: P_unit },
+            success: function (result) {
                     location.reload();
+                    alert("Full Payment Done");
                 },
             error: function(jqXHR, textStatus, errorThrown) {
                     // Handle errors, if needed

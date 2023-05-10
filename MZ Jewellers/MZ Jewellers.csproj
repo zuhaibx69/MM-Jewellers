@@ -135,6 +135,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GRN.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Inventory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -2067,6 +2070,7 @@
     <Content Include="Views\Vendor\QuotationRequests.cshtml" />
     <Content Include="Views\Wholesaler\PendingOrder.cshtml" />
     <Content Include="Views\Wholesaler\Inventory.cshtml" />
+    <Content Include="Views\Wholesaler\GRN.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

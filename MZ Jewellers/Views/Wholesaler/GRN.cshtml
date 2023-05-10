@@ -1,10 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Inventory";
+    ViewBag.Title = "GRN";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<link href="~/Content/all.min.css"/>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -13,26 +11,28 @@
                 <table class="table mb-0">
                     <thead>
                         <tr>
-                            <th scope="col">Order ID</th>
+                            <th scope="col">Purchase Order No.</th>
+                            <th scope="col">Vendor Name</th>
                             <th scope="col">Product</th>
-                            <th scope="col">Description</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Unit</th>
                             <th scope="col">Total Amount</th>
+                            <th scope="col">Receiving Date</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         @{
-                            for (int i = 0; i < ViewBag.Inventory.Count; i++)
+                            for (int i = 0; i < ViewBag.GRN.Count; i++)
                             {
                                 <tr>
-                                    <td>@ViewBag.Inventory[i].order_id</td>
-                                    <td>@ViewBag.Inventory[i].prd_name</td>
-                                    <td>@ViewBag.Inventory[i].prd_description</td>
-                                    <td>@ViewBag.Inventory[i].prd_quantity</td>
-                                    <td>@ViewBag.Inventory[i].prd_unit</td>
-                                    <td>@ViewBag.Inventory[i].total_amount</td>
+                                    <td>@ViewBag.GRN[i].order_id</td>
+                                    <td>@ViewBag.GRN[i].vendor_name</td>
+                                    <td>@ViewBag.GRN[i].prd_name</td>
+                                    <td>@ViewBag.GRN[i].prd_quantity</td>
+                                    <td>@ViewBag.GRN[i].prd_unit</td>
+                                    <td>@ViewBag.GRN[i].total_amount</td>
+                                    <td>@ViewBag.GRN[i].receiving_date</td>
                                 </tr>
                             }
                         }
