@@ -30,119 +30,136 @@
 
                                 if (specialItem == null)
                                 {
-                                <tr data-toggle="collapse" data-target="#child-row-@i">
-                                    <td><i class="fa fa-caret-down"></i></td>
-                                    <td>@ViewBag.QRlist[i].req_id</td>
-                                    <th scope="row" style="color: #666666;">Gold</th>
-                                    <td>Raw Material</td>
-                                    <td>@ViewBag.QRlist[i].prd_quantity</td>
-                                    <td>@ViewBag.Prodlist[@ViewBag.QRlist[i].prd_id - 1].prd_unit</td>
-                                    <td>@ViewBag.QRlist[i].order_deadline.Date.ToString("d")</td>
-                                </tr>
-                                <tr id="child-row-@i" class="collapse">
-                                    <td colspan="8">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th scope="col">Vendor Name</th>
-                                                    <th scope="col">Vendor Email</th>
-                                                    <th scope="col">Price</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                        
-                                                @{
+                                    <tr data-toggle="collapse" data-target="#child-row-@i">
+                                        <td><i class="fa fa-caret-down"></i></td>
+                                        <td>@ViewBag.QRlist[i].req_id</td>
+                                        <th scope="row" style="color: #666666;">Gold</th>
+                                        <td>Raw Material</td>
+                                        <td>@ViewBag.QRlist[i].prd_quantity</td>
+                                        <td>@ViewBag.Prodlist[@ViewBag.QRlist[i].prd_id - 1].prd_unit</td>
+                                        <td>@ViewBag.QRlist[i].order_deadline.Date.ToString("d")</td>
+                                    </tr>
+                                    <tr id="child-row-@i" class="collapse">
+                                        <td colspan="8">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th scope="col">Vendor Name</th>
+                                                        <th scope="col">Vendor Email</th>
+                                                        <th scope="col">Price</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                    List<MZ_Jewellers.Models.Quotation_Response> models = new List<MZ_Jewellers.Models.Quotation_Response>();
-                                                    models = ((List<MZ_Jewellers.Models.Quotation_Response>)ViewBag.QRESlist).Where(m => m.req_id == @ViewBag.QRlist[i].req_id).ToList();
+                                                    @{
 
-                                                    if (models.Count > 0)
-                                                    {
-                                                        for (int j = 0; j < models.Count; j++)
+                                                        List<MZ_Jewellers.Models.Quotation_Response> models = new List<MZ_Jewellers.Models.Quotation_Response>();
+                                                        models = ((List<MZ_Jewellers.Models.Quotation_Response>)ViewBag.QRESlist).Where(m => m.req_id == @ViewBag.QRlist[i].req_id).ToList();
+
+                                                        if (models.Count > 0)
                                                         {
-                                                            <tr>
-                                                                
-                                                                <td>@(j+1)</td>
-                                                                <td>
-                                                                    @{
-                                                                        List<MZ_Jewellers.Models.Vendor> Vmodels = new List<MZ_Jewellers.Models.Vendor>();
-                                                                        Vmodels = ((List<MZ_Jewellers.Models.Vendor>)ViewBag.Vendor).Where(m => m.vendor_id == @models[j].vendor_id).ToList();
-                                                                    }@Vmodels[0].vendor_name
-                                                                </td>
-                                                                <td>
-                                                                    @Vmodels[0].vendor_email
-                                                                </td>
+                                                            for (int j = 0; j < models.Count; j++)
+                                                            {
+                                                                <tr>
 
-                                                                <td>@models[j].price_perunit PKR</td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@models[j].price_perunit','@ViewBag.QRlist[i].prd_quantity','@ViewBag.QRlist[i].req_id','@models[j].vendor_id')"><i class="fas fa-check"></i></button>
-                                                                </td>
-                                                            </tr>
+                                                                    <td>@(j+1)</td>
+                                                                    <td>
+                                                                        @{
+                                                                            List<MZ_Jewellers.Models.Vendor> Vmodels = new List<MZ_Jewellers.Models.Vendor>();
+                                                                            Vmodels = ((List<MZ_Jewellers.Models.Vendor>)ViewBag.Vendor).Where(m => m.vendor_id == @models[j].vendor_id).ToList();
+                                                                        }@Vmodels[0].vendor_name
+                                                                    </td>
+                                                                    <td>
+                                                                        @Vmodels[0].vendor_email
+                                                                    </td>
+
+                                                                    <td>@models[j].price_perunit PKR</td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" onclick="myf('@models[j].price_perunit','@ViewBag.QRlist[i].prd_quantity','@ViewBag.QRlist[i].req_id','@models[j].vendor_id','@Vmodels[0].vendor_name','@Vmodels[0].vendor_acc_title','@Vmodels[0].vendor_bank_name','@Vmodels[0].vendor_acc_no')"><i class="fas fa-check"></i></button>
+                                                                    </td>
+                                                                </tr>
+
+
+                                                            }
+
+
 
 
                                                         }
-
-
-
+                                                        else
+                                                        {
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>No Response Yet</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        }
 
                                                     }
-                                                    else
-                                                    {
-                                                        <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td>No Response Yet</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                    }
 
-                                                }
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
 
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-
-
-                                <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header border-bottom-0">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-title text-center">
-                                                    <h4>Make Purshase Order</h4>
+                                    <!-- Purshase Modal -->
+                                    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="invoiceModalLabel">Make Purshase Order</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </div>
-                                                <div class="d-flex flex-column text-center pt-3">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <h5>If you want to accept this quotation response then pay the 20% advance payment</h5>
+                                                <div class="modal-body">
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-6">
+                                                            <h6>Vendor:</h6>
+                                                            <p id="p_vendor"></p>
                                                         </div>
-                                                        <div class="form-group" id="advance-option">
-                                                            <label for="amount">Advance Payment</label>
-                                                            <input type="number" class="form-control" id="amount" name="amount" value="" disabled>
+                                                        <div class="col-md-6">
+                                                            <h6>Account Title:</h6>
+                                                            <p id="p_acc_title"></p>
                                                         </div>
+                                                    </div>
 
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-6">
+                                                            <h6>Bank Name:</h6>
+                                                            <p id="p_bank_name"></p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <h6>Account Number:</h6>
+                                                            <p id="p_acc_no"></p>
+                                                        </div>
+                                                    </div>
 
-                                                        <button type="button" class="btn btn-info btn-block btn-round" onclick="Payment()">Pay</button>
-                                                    </form>
-
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-6">
+                                                            <h6>Payment Amount:</h6>
+                                                            <p id="p_payment"></p>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
+                                                <h5 class="ml-3">If you want to accept this quotation response then pay the 20% advance payment</h5>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-secondary" onclick="Payment()" data-dismiss="modal">Pay</button>
+
+                                                </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
-                                </div>
+
 
                                 }
                             }
@@ -167,16 +184,19 @@
         var P_payment_type = "";
         var P_netprice = 0;
 
-        function myf(price,qty,req_id,vend_id){
+        function myf(price,qty,req_id,vend_id,vname,vacctitle,vbankname,vaccnum){
 
-  
             P_order_id = req_id;
             P_vendor_id = vend_id;
             P_total_amount = price * qty;
             P_payment_type = "Advance";
             P_netprice = Math.ceil(((P_total_amount) / 100) * 20);
-            document.getElementById('amount').value = P_netprice;
 
+            document.getElementById('p_vendor').innerHTML = vname;
+            document.getElementById('p_acc_title').innerHTML = vacctitle;
+            document.getElementById('p_bank_name').innerHTML = vbankname;
+            document.getElementById('p_acc_no').innerHTML = vaccnum;
+            document.getElementById('p_payment').innerHTML = P_netprice;
         }
 
 
