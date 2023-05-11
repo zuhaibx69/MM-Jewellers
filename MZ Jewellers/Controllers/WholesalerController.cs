@@ -103,25 +103,65 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult AddVendor()
         {
+            ViewBag.Vendor = db.Vendors.ToList();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddVendor(string vname, string vemail, string vnum)
+        public ActionResult AddVendor(string vname, string vemail, string vnum,string vcnic,string vaddr,int vtax,string vtitle,string vbank,string vacnum)
         {
-            Vendor v = new Vendor
+            bool isExisting = false;
+            string message = "";
+
+            if (db.Vendors.Any(v => v.vendor_email == vemail))
             {
-                vendor_name = vname,
-                vendor_email = vemail,
-                vendor_contact = vnum,
-                vendor_password = vemail.Split('@')[0],
-                vendor_status = "Non-verified"
-            };
+                isExisting = true;
+                message = "Email";
+            }
+            else if (db.Vendors.Any(v => v.vendor_contact == vnum))
+            {
+                isExisting = true;
+                message = "Contact";
+            }
+            else if (db.Vendors.Any(v => v.vendor_cnic == vcnic))
+            {
+                isExisting = true;
+                message = "CNIC";
+            }
+            else if (db.Vendors.Any(v => v.vendor_acc_no == vacnum))
+            {
+                isExisting = true;
+                message = "Account Number";
+            }
 
-            db.Vendors.Add(v);
-            db.SaveChanges();
-
-            return View();
+            if (isExisting)
+            {
+                TempData["AlertMessage"] = message + " already exists in the database. Please change it.";
+                return RedirectToAction("AddVendor");
+            }
+            else
+            {
+                // Data is new, add the vendor to the database
+                Vendor v = new Vendor
+                {
+                    vendor_name = vname,
+                    vendor_email = vemail,
+                    vendor_contact = vnum,
+                    vendor_cnic = vcnic,
+                    vendor_address = vaddr,
+                    vendor_tax = vtax,
+                    vendor_acc_title = vtitle,
+                    vendor_bank_name = vbank,
+                    vendor_acc_no = vacnum,
+                    vendor_password = vemail.Split('@')[0],
+                    vendor_status = "Non-verified"
+                };
+                TempData["AlertMessage"] = "Vendor Registered Successfully..";
+                db.Vendors.Add(v);
+                db.SaveChanges();
+                return RedirectToAction("AddVendor");
+            }
+            
         }
 
 

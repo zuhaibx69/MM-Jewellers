@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (TempData["AlertMessage"] != null)
+{
+    <script>alert('@TempData["AlertMessage"]');</script>
+}
 
 <div class="row">
     <!-- Content Column -->
@@ -16,7 +20,7 @@
             <div className="card-body">
                 <div className="row">
                     @using (Html.BeginForm("AddVendor", "Wholesaler", FormMethod.Post))
-                     {
+                    {
                         <div class="form-row pt-3">
                             <div class="form-group col-lg-4 col-12 px-3">
                                 <label for="vname">Vendor Name</label>
@@ -60,15 +64,36 @@
                                 <input type="submit" value="Add" class="btn btn-primary">
                             </div>
                         </div>
-                     }
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="addVendorModal" tabindex="-1" role="dialog" aria-labelledby="addVendorModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addVendorModalLabel">Add New Vendor</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to add a new vendor?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                        <button type="button" class="btn btn-primary" id="addVendorButton">Yes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
 
-   
 
-</script>
+

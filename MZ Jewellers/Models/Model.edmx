@@ -100,7 +100,7 @@
           <Property Name="vendor_licenseImg" Type="image" />
           <Property Name="vendor_status" Type="varchar" MaxLength="12" />
         </EntityType>
-        <Association Name="FK__GRN__order_id__75A278F5">
+        <Association Name="FK__GRN__order_id__76969D2E">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="1" />
           <End Role="GRN" Type="Self.GRN" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -112,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Inventory__order__72C60C4A">
+        <Association Name="FK__Inventory__order__73BA3083">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="1" />
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -124,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__order_i__6FE99F9F">
+        <Association Name="FK__Payment__order_i__70DDC3D8">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__order__6C190EBB">
+        <Association Name="FK__PurchaseO__order__6D0D32F4">
           <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="1" />
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -148,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__vendo__6D0D32F4">
+        <Association Name="FK__PurchaseO__vendo__6E01572D">
           <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__jewel__656C112C">
+        <Association Name="FK__Quotation__jewel__66603565">
           <End Role="Jeweller" Type="Self.Jeweller" Multiplicity="0..1" />
           <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="*" />
           <ReferentialConstraint>
@@ -172,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__prd_i__6477ECF3">
+        <Association Name="FK__Quotation__prd_i__656C112C">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__req_i__68487DD7">
+        <Association Name="FK__Quotation__req_i__693CA210">
           <End Role="Quotation_Request" Type="Self.Quotation_Request" Multiplicity="1" />
           <End Role="Quotation_Response" Type="Self.Quotation_Response" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__vendo__693CA210">
+        <Association Name="FK__Quotation__vendo__6A30C649">
           <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
           <End Role="Quotation_Response" Type="Self.Quotation_Response" Multiplicity="*" />
           <ReferentialConstraint>
@@ -218,39 +218,39 @@
           <EntitySet Name="Quotation_Request" EntityType="Self.Quotation_Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quotation_Response" EntityType="Self.Quotation_Response" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__GRN__order_id__75A278F5" Association="Self.FK__GRN__order_id__75A278F5">
+          <AssociationSet Name="FK__GRN__order_id__76969D2E" Association="Self.FK__GRN__order_id__76969D2E">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="GRN" EntitySet="GRN" />
           </AssociationSet>
-          <AssociationSet Name="FK__Inventory__order__72C60C4A" Association="Self.FK__Inventory__order__72C60C4A">
+          <AssociationSet Name="FK__Inventory__order__73BA3083" Association="Self.FK__Inventory__order__73BA3083">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__order_i__6FE99F9F" Association="Self.FK__Payment__order_i__6FE99F9F">
+          <AssociationSet Name="FK__Payment__order_i__70DDC3D8" Association="Self.FK__Payment__order_i__70DDC3D8">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__order__6C190EBB" Association="Self.FK__PurchaseO__order__6C190EBB">
+          <AssociationSet Name="FK__PurchaseO__order__6D0D32F4" Association="Self.FK__PurchaseO__order__6D0D32F4">
             <End Role="Quotation_Request" EntitySet="Quotation_Request" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__vendo__6D0D32F4" Association="Self.FK__PurchaseO__vendo__6D0D32F4">
+          <AssociationSet Name="FK__PurchaseO__vendo__6E01572D" Association="Self.FK__PurchaseO__vendo__6E01572D">
             <End Role="Vendor" EntitySet="Vendor" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__jewel__656C112C" Association="Self.FK__Quotation__jewel__656C112C">
+          <AssociationSet Name="FK__Quotation__jewel__66603565" Association="Self.FK__Quotation__jewel__66603565">
             <End Role="Jeweller" EntitySet="Jeweller" />
             <End Role="Quotation_Request" EntitySet="Quotation_Request" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__prd_i__6477ECF3" Association="Self.FK__Quotation__prd_i__6477ECF3">
+          <AssociationSet Name="FK__Quotation__prd_i__656C112C" Association="Self.FK__Quotation__prd_i__656C112C">
             <End Role="Product" EntitySet="Product" />
             <End Role="Quotation_Request" EntitySet="Quotation_Request" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__req_i__68487DD7" Association="Self.FK__Quotation__req_i__68487DD7">
+          <AssociationSet Name="FK__Quotation__req_i__693CA210" Association="Self.FK__Quotation__req_i__693CA210">
             <End Role="Quotation_Request" EntitySet="Quotation_Request" />
             <End Role="Quotation_Response" EntitySet="Quotation_Response" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__vendo__693CA210" Association="Self.FK__Quotation__vendo__693CA210">
+          <AssociationSet Name="FK__Quotation__vendo__6A30C649" Association="Self.FK__Quotation__vendo__6A30C649">
             <End Role="Vendor" EntitySet="Vendor" />
             <End Role="Quotation_Response" EntitySet="Quotation_Response" />
           </AssociationSet>
