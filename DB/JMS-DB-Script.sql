@@ -29,13 +29,16 @@ create table Vendor
 	vendor_bank_name varchar(100) not null,
 	vendor_acc_title varchar(50) not null,
 	vendor_acc_no varchar(30) not null unique,
-	vendor_licenseNo varchar(10),
+	vendor_licenseNo varchar(10) unique,
 	vendor_licenseImg image,
 	vendor_status varchar(12) default 'Non-verified'
 
 );
 
 select * from Vendor
+
+ALTER TABLE Vendor
+ADD UNIQUE (vendor_licenseNo);
 
 create table Product
 (

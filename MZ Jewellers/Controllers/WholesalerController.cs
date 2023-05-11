@@ -1,10 +1,14 @@
 ﻿using MZ_Jewellers.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace MZ_Jewellers.Controllers
 {
@@ -164,6 +168,22 @@ namespace MZ_Jewellers.Controllers
             
         }
 
+        [HttpGet]
+        public ActionResult VerifyVendor()
+        {
+            ViewBag.Vendor = db.Vendors.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult VerifyVendor(int id)
+        {
+            Vendor v = db.Vendors.Find(id);
+            Session["VendorStatus"] = v.vendor_status = "Verified";
+            db.Vendors.AddOrUpdate(v);
+            db.SaveChanges();
+            return View();
+        }
 
         [HttpPost]
         public ActionResult ViewResponse(int order_id, int vendor_id, int total_amount, string payment_type, int netprice)

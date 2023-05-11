@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
@@ -38,12 +39,7 @@ namespace MZ_Jewellers.Controllers
         {
             if (Session["VendorId"] != null)
             {
-                if (Session["VendorStatus"].ToString().Equals("Non-verified"))
-                {
-                    return View("VerifyAccount");
-                }
-
-                else if (Session["VendorStatus"].ToString().Equals("Verified"))
+                if (Session["VendorStatus"].ToString().Equals("Verified"))
                 {
                     ViewBag.QRlist = db.Quotation_Request.ToList();
                     ViewBag.QRESlist = db.Quotation_Response.ToList();
@@ -53,6 +49,9 @@ namespace MZ_Jewellers.Controllers
                     string a = s.order_deadline.Date.ToString();
                     return View();
                 }
+
+                return RedirectToAction("VerifyAccount");
+
             }
 
             else if (Session["JewellerId"] != null)
@@ -97,10 +96,7 @@ namespace MZ_Jewellers.Controllers
                     return View();
                 }
 
-                else if (Session["VendorStatus"].ToString().Equals("Verified"))
-                {
-                    return View("VerifiedAccount");
-                }
+                return View("VerifiedAccount");
 
             }
 
@@ -113,6 +109,12 @@ namespace MZ_Jewellers.Controllers
         {
             if (Session["VendorId"] != null)
             {
+                if (db.Vendors.Any(ve => ve.vendor_licenseNo == licNo))
+                {
+                    TempData["AlertMessage"] = "Your License No. is wrong or fake. Please provide correct license no.";
+                    return RedirectToAction("VerifyAccount");
+                }
+
                 byte[] imageData;
 
                 using (var binaryReader = new BinaryReader(licImg.InputStream))
@@ -123,7 +125,7 @@ namespace MZ_Jewellers.Controllers
                 Vendor v = db.Vendors.Find(Session["VendorId"]);
                 v.vendor_licenseNo = licNo;
                 v.vendor_licenseImg = imageData;
-                Session["VendorStatus"] = v.vendor_status = "Verified";
+                Session["VendorStatus"] = v.vendor_status = "Pending";
                 db.Vendors.AddOrUpdate(v);
                 db.SaveChanges();
                 return RedirectToAction("VerifyAccount");

@@ -36,3 +36,7 @@
     </div>
 </div>
 
+@if (TempData["AlertMessage"] != null)
+{
+    <script>alert('@TempData["AlertMessage"]');</script>
+}

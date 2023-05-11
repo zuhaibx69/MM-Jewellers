@@ -4,4 +4,16 @@
     Layout = "~/Views/Shared/_VendorLayout.cshtml";
 }
 
-<h2>Your Account is Verified</h2>
+@{
+    if (Session["VendorStatus"].ToString().Equals("Verified"))
+    {
+        <h2>Your Account is Verified</h2>
+    }
+
+    else if (Session["VendorStatus"].ToString().Equals("Pending"))
+    {
+        <h2>Your Account is Pending Verification</h2>
+    }
+
+}
+

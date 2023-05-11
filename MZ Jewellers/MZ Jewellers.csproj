@@ -2071,6 +2071,7 @@
     <Content Include="Views\Wholesaler\PendingOrder.cshtml" />
     <Content Include="Views\Wholesaler\Inventory.cshtml" />
     <Content Include="Views\Wholesaler\GRN.cshtml" />
+    <Content Include="Views\Wholesaler\VerifyVendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
