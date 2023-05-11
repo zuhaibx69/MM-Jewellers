@@ -39,7 +39,9 @@
                                     <td>@ViewBag.Vendor[i].vendor_licenseNo</td>
 
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="convertPic('@ViewBag.Vendor[i].vendor_licenseImg')">License Image</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VendorImg" onclick="showVendorImage('@Url.Action("GetVendorImage", "Wholesaler", new { vendorId = @ViewBag.Vendor[i].vendor_id })')">License Image</button>
+
+                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VendorImg" onclick="convertPic('@ViewBag.Vendor[i].vendor_licenseImg')">License Image</button>*@
                                     </td>
 
                                     <td>
@@ -48,14 +50,19 @@
                                 </tr>
                             }
 
-                                                        <!-- Invoice Modal -->
-                            <!--<div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <img src="data:image/jpeg;base64,@(Convert.ToBase64String(@ViewBag.Vendor[i].vendor_licenseImg))">
-                                    </div>
+                    <div class="modal fade" id="VendorImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">License Image</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                            </div>-->
+                                <div class="modal-body">
+                                    <img style="max-width: 100%; max-height: 100%;" id="vendorImage" src="https://via.placeholder.com/150" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                         }
@@ -69,14 +76,9 @@
 
 <script>
 
-    var img = "";
-
-    function convertPic(pic) {
-
-            @*var p = (byte[]) pic;
-            img = "data:image/jpeg;base64,@(Convert.ToBase64String(p))";*@
-
-        }
+        function showVendorImage(url) {
+            $('#vendorImage').attr('src', url);
+    }
 
 
 </script>

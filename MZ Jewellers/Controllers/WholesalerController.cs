@@ -282,5 +282,21 @@ namespace MZ_Jewellers.Controllers
             return View();
         }
 
+        public ActionResult GetVendorImage(int vendorId)
+        {
+            
+                var vendor = db.Vendors.FirstOrDefault(v => v.vendor_id == vendorId);
+                if (vendor != null)
+                {
+                    return File(vendor.vendor_licenseImg, "image/jpeg");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        
+
+
     }
 }
