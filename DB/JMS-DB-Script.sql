@@ -12,7 +12,6 @@ create table Jeweller
 );
 
 insert into Jeweller values ('A1', 'Huzaifa Admin', '1234');
-insert into Jeweller values ('A2', 'Awais Admin', '4321');
 
 select * from Jeweller
 
@@ -36,9 +35,6 @@ create table Vendor
 );
 
 select * from Vendor
-
-ALTER TABLE Vendor
-ADD UNIQUE (vendor_licenseNo);
 
 create table Product
 (

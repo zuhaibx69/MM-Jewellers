@@ -44,14 +44,21 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult Orders()
         {
-            ViewBag.Orderlist = db.PurchaseOrders.ToList();
-            ViewBag.Prodlist = db.Products.ToList();
-            ViewBag.Vendorlist = db.Vendors.ToList();
-            ViewBag.Payment = db.Payments.ToList();
-            ViewBag.Reqlist = db.Quotation_Request.ToList();
-            ViewBag.Jewellerlist = db.Jewellers.ToList();
+            if (Session["JewellerId"] != null)
+            {
 
-            return View();
+                ViewBag.Orderlist = db.PurchaseOrders.ToList();
+                ViewBag.Prodlist = db.Products.ToList();
+                ViewBag.Vendorlist = db.Vendors.ToList();
+                ViewBag.Payment = db.Payments.ToList();
+                ViewBag.Reqlist = db.Quotation_Request.ToList();
+                ViewBag.Jewellerlist = db.Jewellers.ToList();
+
+                return View();
+            }
+
+            return RedirectToAction("Login", "Accounts");
+
         }
 
         [HttpPost]
@@ -92,23 +99,33 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult ViewResponse()
         {
-            ViewBag.QRlist = db.Quotation_Request.ToList();
-            ViewBag.QRESlist = db.Quotation_Response.ToList();
-            ViewBag.Prodlist = db.Products.ToList();
-            ViewBag.Vendor = db.Vendors.ToList();
-            ViewBag.PurchaseOrder = db.PurchaseOrders.ToList();
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.QRlist = db.Quotation_Request.ToList();
+                ViewBag.QRESlist = db.Quotation_Response.ToList();
+                ViewBag.Prodlist = db.Products.ToList();
+                ViewBag.Vendor = db.Vendors.ToList();
+                ViewBag.PurchaseOrder = db.PurchaseOrders.ToList();
 
-            Quotation_Request s = new Quotation_Request();
-            string a = s.order_deadline.Date.ToString();
+                Quotation_Request s = new Quotation_Request();
+                string a = s.order_deadline.Date.ToString();
 
-            return View();
+                return View();
+            }
+
+            return RedirectToAction("Login", "Accounts");
         }
 
         [HttpGet]
         public ActionResult AddVendor()
         {
-            ViewBag.Vendor = db.Vendors.ToList();
-            return View();
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.Vendor = db.Vendors.ToList();
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
+
         }
 
         [HttpPost]
@@ -171,8 +188,12 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult VerifyVendor()
         {
-            ViewBag.Vendor = db.Vendors.ToList();
-            return View();
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.Vendor = db.Vendors.ToList();
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
         }
 
         public ActionResult VerifyVendorPost(int id)
@@ -187,8 +208,12 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult Vendors()
         {
-            ViewBag.Vendor = db.Vendors.ToList();
-            return View();
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.Vendor = db.Vendors.ToList();
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
         }
 
         [HttpPost]
@@ -221,14 +246,17 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult PendingOrder()
         {
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.Orderlist = db.PurchaseOrders.ToList();
+                ViewBag.Prodlist = db.Products.ToList();
+                ViewBag.Vendorlist = db.Vendors.ToList();
+                ViewBag.Payment = db.Payments.ToList();
+                ViewBag.Reqlist = db.Quotation_Request.ToList();
 
-            ViewBag.Orderlist = db.PurchaseOrders.ToList();
-            ViewBag.Prodlist = db.Products.ToList();
-            ViewBag.Vendorlist = db.Vendors.ToList();
-            ViewBag.Payment = db.Payments.ToList();
-            ViewBag.Reqlist = db.Quotation_Request.ToList();
-
-            return View();
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
 
         }
 
@@ -277,15 +305,24 @@ namespace MZ_Jewellers.Controllers
         [HttpGet]
         public ActionResult Inventory()
         {
-            ViewBag.Inventory = db.Inventories.ToList();
-            return View();
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.Inventory = db.Inventories.ToList();
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
+
         }
 
         [HttpGet]
         public ActionResult GRN()
         {
-            ViewBag.GRN = db.GRNs.ToList();
-            return View();
+            if (Session["JewellerId"] != null)
+            {
+                ViewBag.GRN = db.GRNs.ToList();
+                return View();
+            }
+            return RedirectToAction("Login", "Accounts");
         }
 
         public ActionResult GetVendorImage(int vendorId)
