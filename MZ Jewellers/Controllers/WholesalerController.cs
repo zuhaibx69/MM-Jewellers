@@ -175,14 +175,13 @@ namespace MZ_Jewellers.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult VerifyVendor(int id)
+        public ActionResult VerifyVendorPost(int id)
         {
             Vendor v = db.Vendors.Find(id);
             Session["VendorStatus"] = v.vendor_status = "Verified";
             db.Vendors.AddOrUpdate(v);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("VerifyVendor");
         }
 
         [HttpGet]

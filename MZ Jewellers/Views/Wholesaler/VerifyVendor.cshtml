@@ -41,11 +41,10 @@
                                     <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VendorImg" onclick="showVendorImage('@Url.Action("GetVendorImage", "Wholesaler", new { vendorId = @ViewBag.Vendor[i].vendor_id })')">License Image</button>
 
-                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#VendorImg" onclick="convertPic('@ViewBag.Vendor[i].vendor_licenseImg')">License Image</button>*@
                                     </td>
 
                                     <td>
-                                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("VerifyVendor", "Wholesaler", new { id = @ViewBag.Vendor[i].vendor_id })'">Verify</button>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("VerifyVendorPost", "Wholesaler", new { id = @ViewBag.Vendor[i].vendor_id })'">Verify</button>
                                     </td>
                                 </tr>
                             }
