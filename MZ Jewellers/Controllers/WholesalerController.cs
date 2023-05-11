@@ -185,6 +185,13 @@ namespace MZ_Jewellers.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Vendors()
+        {
+            ViewBag.Vendor = db.Vendors.ToList();
+            return View();
+        }
+
         [HttpPost]
         public ActionResult ViewResponse(int order_id, int vendor_id, int total_amount, string payment_type, int netprice)
         {

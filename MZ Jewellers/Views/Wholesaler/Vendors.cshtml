@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Vendors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Vendors</h4>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="table-responsive bg-white">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Cnic</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Bank Name</th>
+                            <th scope="col">Account Title</th>
+                            <th scope="col">Account No.</th>
+                            <th scope="col">License No.</th>
+                            <th scope="col">License Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            int i;
+                            for (i = 0; i < ViewBag.Vendor.Count; i++)
+                            {
+                                if (@ViewBag.Vendor[i].vendor_status != "Verified")
+                                {
+                                    continue;
+                                }
+
+                                <tr>
+                                    <td>@ViewBag.Vendor[i].vendor_name</td>
+                                    <td>@ViewBag.Vendor[i].vendor_email</td>
+                                    <td>@ViewBag.Vendor[i].vendor_contact</td>
+                                    <td>@ViewBag.Vendor[i].vendor_cnic</td>
+                                    <td>@ViewBag.Vendor[i].vendor_address</td>
+                                    <td>@ViewBag.Vendor[i].vendor_bank_name</td>
+                                    <td>@ViewBag.Vendor[i].vendor_acc_title</td>
+                                    <td>@ViewBag.Vendor[i].vendor_acc_no</td>
+                                    <td>@ViewBag.Vendor[i].vendor_licenseNo</td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InvoiceModal" onclick="convertPic('@ViewBag.Vendor[i].vendor_licenseImg')">License Image</button>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

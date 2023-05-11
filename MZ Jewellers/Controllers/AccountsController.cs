@@ -40,8 +40,6 @@ namespace MZ_Jewellers.Controllers
         public JsonResult JewellerLogin(string uname, string pwd)
         {
             var s = db.Jewellers.Where(x => x.jeweller_name == uname && x.jeweller_password == pwd).FirstOrDefault();
-            bool success = true;
-            string errorMessage = "";
 
             if (s != null)
             {
@@ -61,8 +59,6 @@ namespace MZ_Jewellers.Controllers
         public JsonResult VendorLogin(string email, string pwd)
         {
             var s = db.Vendors.Where(x => x.vendor_email == email && x.vendor_password == pwd).FirstOrDefault();
-            bool success = true;
-            string errorMessage = "";
 
             if (s != null)
             {

@@ -2072,6 +2072,7 @@
     <Content Include="Views\Wholesaler\Inventory.cshtml" />
     <Content Include="Views\Wholesaler\GRN.cshtml" />
     <Content Include="Views\Wholesaler\VerifyVendor.cshtml" />
+    <Content Include="Views\Wholesaler\Vendors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
